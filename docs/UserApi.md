@@ -1,6 +1,6 @@
 # giteapy.UserApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -106,7 +106,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateRepoOption**](CreateRepoOption.md)|  | [optional] 
+ **body** | [**CreateRepoOption**](CreateRepoOption.md)|  | [optional]
 
 ### Return type
 
@@ -182,7 +182,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateEmailOption**](CreateEmailOption.md)|  | [optional] 
+ **body** | [**CreateEmailOption**](CreateEmailOption.md)|  | [optional]
 
 ### Return type
 
@@ -258,8 +258,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **follower** | **str**| username of following user | 
- **followee** | **str**| username of followed user | 
+ **follower** | **str**| username of following user |
+ **followee** | **str**| username of followed user |
 
 ### Return type
 
@@ -335,8 +335,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
- **access_token** | [**AccessToken**](AccessToken.md)|  | [optional] 
+ **username** | **str**| username of user |
+ **access_token** | [**AccessToken**](AccessToken.md)|  | [optional]
 
 ### Return type
 
@@ -411,7 +411,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of followed user | 
+ **username** | **str**| username of followed user |
 
 ### Return type
 
@@ -487,8 +487,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -563,7 +563,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user to unfollow | 
+ **username** | **str**| username of user to unfollow |
 
 ### Return type
 
@@ -638,7 +638,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of key to delete | 
+ **id** | **int**| id of key to delete |
 
 ### Return type
 
@@ -713,7 +713,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of key to delete | 
+ **id** | **int**| id of key to delete |
 
 ### Return type
 
@@ -789,8 +789,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo to unstar | 
- **repo** | **str**| name of the repo to unstar | 
+ **owner** | **str**| owner of the repo to unstar |
+ **repo** | **str**| name of the repo to unstar |
 
 ### Return type
 
@@ -866,7 +866,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of key to get | 
+ **id** | **int**| id of key to get |
 
 ### Return type
 
@@ -942,7 +942,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of key to get | 
+ **id** | **int**| id of key to get |
 
 ### Return type
 
@@ -1234,7 +1234,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fingerprint** | **str**| fingerprint of the key | [optional] 
+ **fingerprint** | **str**| fingerprint of the key | [optional]
 
 ### Return type
 
@@ -1526,7 +1526,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **form** | [**CreateGPGKeyOption**](CreateGPGKeyOption.md)|  | [optional] 
+ **form** | [**CreateGPGKeyOption**](CreateGPGKeyOption.md)|  | [optional]
 
 ### Return type
 
@@ -1602,7 +1602,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateKeyOption**](CreateKeyOption.md)|  | [optional] 
+ **body** | [**CreateKeyOption**](CreateKeyOption.md)|  | [optional]
 
 ### Return type
 
@@ -1677,7 +1677,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user to follow | 
+ **username** | **str**| username of user to follow |
 
 ### Return type
 
@@ -1753,8 +1753,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo to star | 
- **repo** | **str**| name of the repo to star | 
+ **owner** | **str**| owner of the repo to star |
+ **repo** | **str**| name of the repo to star |
 
 ### Return type
 
@@ -1902,8 +1902,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
- **token** | **int**| token to be deleted | 
+ **username** | **str**| username of user |
+ **token** | **int**| token to be deleted |
 
 ### Return type
 
@@ -1978,7 +1978,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**DeleteEmailOption**](DeleteEmailOption.md)|  | [optional] 
+ **body** | [**DeleteEmailOption**](DeleteEmailOption.md)|  | [optional]
 
 ### Return type
 
@@ -2054,7 +2054,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user to get | 
+ **username** | **str**| username of user to get |
 
 ### Return type
 
@@ -2202,7 +2202,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user to get | 
+ **username** | **str**| username of user to get |
 
 ### Return type
 
@@ -2278,7 +2278,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
+ **username** | **str**| username of user |
 
 ### Return type
 
@@ -2426,7 +2426,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
+ **username** | **str**| username of user |
 
 ### Return type
 
@@ -2502,7 +2502,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
+ **username** | **str**| username of user |
 
 ### Return type
 
@@ -2578,7 +2578,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
+ **username** | **str**| username of user |
 
 ### Return type
 
@@ -2655,8 +2655,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
- **fingerprint** | **str**| fingerprint of the key | [optional] 
+ **username** | **str**| username of user |
+ **fingerprint** | **str**| fingerprint of the key | [optional]
 
 ### Return type
 
@@ -2732,7 +2732,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
+ **username** | **str**| username of user |
 
 ### Return type
 
@@ -2808,7 +2808,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
+ **username** | **str**| username of user |
 
 ### Return type
 
@@ -2884,7 +2884,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of the user | 
+ **username** | **str**| username of the user |
 
 ### Return type
 
@@ -3034,9 +3034,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| keyword | [optional] 
- **uid** | **int**| ID of the user to search for | [optional] 
- **limit** | **int**| maximum number of users to return | [optional] 
+ **q** | **str**| keyword | [optional]
+ **uid** | **int**| ID of the user to search for | [optional]
+ **limit** | **int**| maximum number of users to return | [optional]
 
 ### Return type
 
@@ -3114,9 +3114,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **user** | **str**| username of user | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **user** | **str**| username of user |
 
 ### Return type
 

@@ -17,13 +17,13 @@ Python 2.7 and 3.4+
 If the python package is hosted on Github, you can install directly from Github
 
 ```sh
-pip install git+https://github.com//.git
+pip install git+https://github.com/RajeshHegde/giteapy.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com//.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/RajeshHegde/giteapy.git`)
 
 Then import the package:
 ```python
-import giteapy 
+import giteapy
 ```
 
 ### Setuptools
@@ -84,7 +84,7 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
 username = 'username_example' # str | username of the user that will own the created organization
-organization = giteapy.CreateOrgOption() # CreateOrgOption | 
+organization = giteapy.CreateOrgOption() # CreateOrgOption |
 
 try:
     # Create an organization
@@ -97,7 +97,7 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -444,6 +444,6 @@ Class | Method | HTTP request | Description
 
 
 ## Author
-
+* Rajesh Hegde
 
 

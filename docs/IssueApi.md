@@ -1,6 +1,6 @@
 # giteapy.IssueApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -99,10 +99,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue | 
- **body** | [**IssueLabelsOption**](IssueLabelsOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue |
+ **body** | [**IssueLabelsOption**](IssueLabelsOption.md)|  | [optional]
 
 ### Return type
 
@@ -181,10 +181,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| index of the issue to add tracked time to | 
- **body** | [**AddTimeOption**](AddTimeOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| index of the issue to add tracked time to |
+ **body** | [**AddTimeOption**](AddTimeOption.md)|  | [optional]
 
 ### Return type
 
@@ -261,9 +261,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue |
 
 ### Return type
 
@@ -342,10 +342,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue | 
- **body** | [**CreateIssueCommentOption**](CreateIssueCommentOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue |
+ **body** | [**CreateIssueCommentOption**](CreateIssueCommentOption.md)|  | [optional]
 
 ### Return type
 
@@ -423,9 +423,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**CreateIssueOption**](CreateIssueOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreateIssueOption**](CreateIssueOption.md)|  | [optional]
 
 ### Return type
 
@@ -503,9 +503,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**CreateLabelOption**](CreateLabelOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreateLabelOption**](CreateLabelOption.md)|  | [optional]
 
 ### Return type
 
@@ -583,9 +583,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**CreateMilestoneOption**](CreateMilestoneOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreateMilestoneOption**](CreateMilestoneOption.md)|  | [optional]
 
 ### Return type
 
@@ -662,9 +662,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of comment to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of comment to delete |
 
 ### Return type
 
@@ -742,10 +742,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| this parameter is ignored | 
- **id** | **int**| id of comment to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| this parameter is ignored |
+ **id** | **int**| id of comment to delete |
 
 ### Return type
 
@@ -822,9 +822,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the label to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the label to delete |
 
 ### Return type
 
@@ -901,9 +901,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the milestone to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the milestone to delete |
 
 ### Return type
 
@@ -982,10 +982,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the comment to edit | 
- **body** | [**EditIssueCommentOption**](EditIssueCommentOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the comment to edit |
+ **body** | [**EditIssueCommentOption**](EditIssueCommentOption.md)|  | [optional]
 
 ### Return type
 
@@ -1065,11 +1065,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| this parameter is ignored | 
- **id** | **int**| id of the comment to edit | 
- **body** | [**EditIssueCommentOption**](EditIssueCommentOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| this parameter is ignored |
+ **id** | **int**| id of the comment to edit |
+ **body** | [**EditIssueCommentOption**](EditIssueCommentOption.md)|  | [optional]
 
 ### Return type
 
@@ -1148,10 +1148,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue to edit | 
- **body** | [**EditIssueOption**](EditIssueOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue to edit |
+ **body** | [**EditIssueOption**](EditIssueOption.md)|  | [optional]
 
 ### Return type
 
@@ -1230,10 +1230,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue to create or update a deadline on | 
- **body** | [**EditDeadlineOption**](EditDeadlineOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue to create or update a deadline on |
+ **body** | [**EditDeadlineOption**](EditDeadlineOption.md)|  | [optional]
 
 ### Return type
 
@@ -1312,10 +1312,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the label to edit | 
- **body** | [**EditLabelOption**](EditLabelOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the label to edit |
+ **body** | [**EditLabelOption**](EditLabelOption.md)|  | [optional]
 
 ### Return type
 
@@ -1394,10 +1394,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the milestone | 
- **body** | [**EditMilestoneOption**](EditMilestoneOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the milestone |
+ **body** | [**EditMilestoneOption**](EditMilestoneOption.md)|  | [optional]
 
 ### Return type
 
@@ -1476,10 +1476,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue | 
- **since** | **str**| if provided, only comments updated since the specified time are returned. | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue |
+ **since** | **str**| if provided, only comments updated since the specified time are returned. | [optional]
 
 ### Return type
 
@@ -1557,9 +1557,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue to get |
 
 ### Return type
 
@@ -1637,9 +1637,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the label to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the label to get |
 
 ### Return type
 
@@ -1717,9 +1717,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue |
 
 ### Return type
 
@@ -1797,9 +1797,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the milestone | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the milestone |
 
 ### Return type
 
@@ -1877,9 +1877,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **state** | **str**| Milestone state, Recognised values are open, closed and all. Defaults to \&quot;open\&quot; | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **state** | **str**| Milestone state, Recognised values are open, closed and all. Defaults to \&quot;open\&quot; | [optional]
 
 ### Return type
 
@@ -1957,9 +1957,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **since** | **str**| if provided, only comments updated since the provided time are returned. | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **since** | **str**| if provided, only comments updated since the provided time are returned. | [optional]
 
 ### Return type
 
@@ -2040,12 +2040,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **state** | **str**| whether issue is open or closed | [optional] 
- **labels** | **str**| comma separated list of labels. Fetch only issues that have any of this labels. Non existent labels are discarded | [optional] 
- **page** | **int**| page number of requested issues | [optional] 
- **q** | **str**| search string | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **state** | **str**| whether issue is open or closed | [optional]
+ **labels** | **str**| comma separated list of labels. Fetch only issues that have any of this labels. Non existent labels are discarded | [optional]
+ **page** | **int**| page number of requested issues | [optional]
+ **q** | **str**| search string | [optional]
 
 ### Return type
 
@@ -2122,8 +2122,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -2201,10 +2201,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue | 
- **id** | **int**| id of the label to remove | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue |
+ **id** | **int**| id of the label to remove |
 
 ### Return type
 
@@ -2283,10 +2283,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue | 
- **body** | [**IssueLabelsOption**](IssueLabelsOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue |
+ **body** | [**IssueLabelsOption**](IssueLabelsOption.md)|  | [optional]
 
 ### Return type
 
@@ -2363,9 +2363,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue to create the stopwatch on | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue to create the stopwatch on |
 
 ### Return type
 
@@ -2442,9 +2442,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the issue to stop the stopwatch on | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the issue to stop the stopwatch on |
 
 ### Return type
 
@@ -2522,9 +2522,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| index of the issue | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| index of the issue |
 
 ### Return type
 

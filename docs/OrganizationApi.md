@@ -1,6 +1,6 @@
 # giteapy.OrganizationApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -99,8 +99,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of organization | 
- **body** | [**CreateRepoOption**](CreateRepoOption.md)|  | [optional] 
+ **org** | **str**| name of organization |
+ **body** | [**CreateRepoOption**](CreateRepoOption.md)|  | [optional]
 
 ### Return type
 
@@ -176,8 +176,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team | 
- **username** | **str**| username of the user to add | 
+ **id** | **int**| id of the team |
+ **username** | **str**| username of the user to add |
 
 ### Return type
 
@@ -254,9 +254,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team | 
- **org** | **str**| organization that owns the repo to add | 
- **repo** | **str**| name of the repo to add | 
+ **id** | **int**| id of the team |
+ **org** | **str**| organization that owns the repo to add |
+ **repo** | **str**| name of the repo to add |
 
 ### Return type
 
@@ -332,8 +332,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **username** | **str**| username of the user | 
+ **org** | **str**| name of the organization |
+ **username** | **str**| username of the user |
 
 ### Return type
 
@@ -395,7 +395,7 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = giteapy.OrganizationApi(giteapy.ApiClient(configuration))
-organization = giteapy.CreateOrgOption() # CreateOrgOption | 
+organization = giteapy.CreateOrgOption() # CreateOrgOption |
 
 try:
     # Create an organization
@@ -409,7 +409,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization** | [**CreateOrgOption**](CreateOrgOption.md)|  | 
+ **organization** | [**CreateOrgOption**](CreateOrgOption.md)|  |
 
 ### Return type
 
@@ -472,7 +472,7 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = giteapy.OrganizationApi(giteapy.ApiClient(configuration))
 org = 'org_example' # str | name of the organization
-body = giteapy.CreateHookOption() # CreateHookOption | 
+body = giteapy.CreateHookOption() # CreateHookOption |
 
 try:
     # Create a hook
@@ -486,8 +486,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **body** | [**CreateHookOption**](CreateHookOption.md)|  | 
+ **org** | **str**| name of the organization |
+ **body** | [**CreateHookOption**](CreateHookOption.md)|  |
 
 ### Return type
 
@@ -564,8 +564,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **body** | [**CreateTeamOption**](CreateTeamOption.md)|  | [optional] 
+ **org** | **str**| name of the organization |
+ **body** | [**CreateTeamOption**](CreateTeamOption.md)|  | [optional]
 
 ### Return type
 
@@ -640,7 +640,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| organization that is to be deleted | 
+ **org** | **str**| organization that is to be deleted |
 
 ### Return type
 
@@ -716,8 +716,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **id** | **int**| id of the hook to delete | 
+ **org** | **str**| name of the organization |
+ **id** | **int**| id of the hook to delete |
 
 ### Return type
 
@@ -793,8 +793,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **username** | **str**| username of the user | 
+ **org** | **str**| name of the organization |
+ **username** | **str**| username of the user |
 
 ### Return type
 
@@ -869,7 +869,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team to delete | 
+ **id** | **int**| id of the team to delete |
 
 ### Return type
 
@@ -932,7 +932,7 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = giteapy.OrganizationApi(giteapy.ApiClient(configuration))
 org = 'org_example' # str | name of the organization to edit
-body = giteapy.EditOrgOption() # EditOrgOption | 
+body = giteapy.EditOrgOption() # EditOrgOption |
 
 try:
     # Edit an organization
@@ -946,8 +946,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization to edit | 
- **body** | [**EditOrgOption**](EditOrgOption.md)|  | 
+ **org** | **str**| name of the organization to edit |
+ **body** | [**EditOrgOption**](EditOrgOption.md)|  |
 
 ### Return type
 
@@ -1025,9 +1025,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **id** | **int**| id of the hook to update | 
- **body** | [**EditHookOption**](EditHookOption.md)|  | [optional] 
+ **org** | **str**| name of the organization |
+ **id** | **int**| id of the hook to update |
+ **body** | [**EditHookOption**](EditHookOption.md)|  | [optional]
 
 ### Return type
 
@@ -1104,8 +1104,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team to edit | 
- **body** | [**EditTeamOption**](EditTeamOption.md)|  | [optional] 
+ **id** | **int**| id of the team to edit |
+ **body** | [**EditTeamOption**](EditTeamOption.md)|  | [optional]
 
 ### Return type
 
@@ -1181,7 +1181,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization to get | 
+ **org** | **str**| name of the organization to get |
 
 ### Return type
 
@@ -1258,8 +1258,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **id** | **int**| id of the hook to get | 
+ **org** | **str**| name of the organization |
+ **id** | **int**| id of the hook to get |
 
 ### Return type
 
@@ -1335,7 +1335,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team to get | 
+ **id** | **int**| id of the team to get |
 
 ### Return type
 
@@ -1411,8 +1411,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **username** | **str**| username of the user | 
+ **org** | **str**| name of the organization |
+ **username** | **str**| username of the user |
 
 ### Return type
 
@@ -1488,8 +1488,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **username** | **str**| username of the user | 
+ **org** | **str**| name of the organization |
+ **username** | **str**| username of the user |
 
 ### Return type
 
@@ -1637,7 +1637,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
+ **org** | **str**| name of the organization |
 
 ### Return type
 
@@ -1713,7 +1713,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
+ **org** | **str**| name of the organization |
 
 ### Return type
 
@@ -1789,7 +1789,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
+ **org** | **str**| name of the organization |
 
 ### Return type
 
@@ -1865,7 +1865,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
+ **org** | **str**| name of the organization |
 
 ### Return type
 
@@ -1942,8 +1942,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team | 
- **username** | **str**| username of the member to list | 
+ **id** | **int**| id of the team |
+ **username** | **str**| username of the member to list |
 
 ### Return type
 
@@ -2019,7 +2019,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team | 
+ **id** | **int**| id of the team |
 
 ### Return type
 
@@ -2095,7 +2095,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team | 
+ **id** | **int**| id of the team |
 
 ### Return type
 
@@ -2171,7 +2171,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
+ **org** | **str**| name of the organization |
 
 ### Return type
 
@@ -2247,7 +2247,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
+ **username** | **str**| username of user |
 
 ### Return type
 
@@ -2323,8 +2323,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **username** | **str**| username of the user | 
+ **org** | **str**| name of the organization |
+ **username** | **str**| username of the user |
 
 ### Return type
 
@@ -2400,8 +2400,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team | 
- **username** | **str**| username of the user to remove | 
+ **id** | **int**| id of the team |
+ **username** | **str**| username of the user to remove |
 
 ### Return type
 
@@ -2480,9 +2480,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the team | 
- **org** | **str**| organization that owns the repo to remove | 
- **repo** | **str**| name of the repo to remove | 
+ **id** | **int**| id of the team |
+ **org** | **str**| organization that owns the repo to remove |
+ **repo** | **str**| name of the repo to remove |
 
 ### Return type
 
@@ -2562,11 +2562,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **org** | **str**| name of the organization | 
- **q** | **str**| keywords to search | [optional] 
- **include_desc** | **bool**| include search within team description (defaults to true) | [optional] 
- **limit** | **int**| limit size of results | [optional] 
- **page** | **int**| page number of results to return (1-based) | [optional] 
+ **org** | **str**| name of the organization |
+ **q** | **str**| keywords to search | [optional]
+ **include_desc** | **bool**| include search within team description (defaults to true) | [optional]
+ **limit** | **int**| limit size of results | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
 
 ### Return type
 
