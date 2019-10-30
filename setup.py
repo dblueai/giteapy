@@ -13,8 +13,13 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
+def read_readme():
+    with open('README.md') as f:
+        return f.read()
+
+
 NAME = "giteapy"
-VERSION = "1.0.0"
+VERSION = "1.0.2"
 # To install the library, run the following
 #
 # python setup.py install
@@ -33,14 +38,25 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Gitea API.",
-    author_email="",
-    url="",
-    keywords=["Swagger", "Gitea API."],
+    description="Gitea Python SDK",
+    author_email="rh@dblue.ai",
+    url="https://github.com/RajeshHegde/giteapy",
+    keywords=["gitea", "git",],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
-    long_description="""\
-    This documentation describes the Gitea API.  # noqa: E501
-    """
+    long_description=read_readme(),
+    long_description_content_type="text/markdown",
+
+    classifiers=[
+          'Programming Language :: Python',
+          'Programming Language :: Python :: 2',
+          'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3',
+          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
+          'Operating System :: OS Independent',
+          'Intended Audience :: Developers',
+      ],
 )
