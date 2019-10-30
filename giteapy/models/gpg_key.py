@@ -16,7 +16,6 @@ import re  # noqa: F401
 
 import six
 
-from giteapy.models.gpg_key import GPGKey  # noqa: F401,E501
 from giteapy.models.gpg_key_email import GPGKeyEmail  # noqa: F401,E501
 
 
