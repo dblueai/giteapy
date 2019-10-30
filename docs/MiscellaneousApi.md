@@ -1,6 +1,6 @@
 # giteapy.MiscellaneousApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -213,7 +213,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MarkdownOption**](MarkdownOption.md)|  | [optional] 
+ **body** | [**MarkdownOption**](MarkdownOption.md)|  | [optional]
 
 ### Return type
 
@@ -289,7 +289,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **str**| Request body to render | 
+ **body** | **str**| Request body to render |
 
 ### Return type
 

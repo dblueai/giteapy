@@ -20,7 +20,6 @@ from giteapy.models.external_tracker import ExternalTracker  # noqa: F401,E501
 from giteapy.models.external_wiki import ExternalWiki  # noqa: F401,E501
 from giteapy.models.internal_tracker import InternalTracker  # noqa: F401,E501
 from giteapy.models.permission import Permission  # noqa: F401,E501
-from giteapy.models.repository import Repository  # noqa: F401,E501
 from giteapy.models.user import User  # noqa: F401,E501
 
 

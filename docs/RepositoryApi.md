@@ -1,6 +1,6 @@
 # giteapy.RepositoryApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -142,7 +142,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateRepoOption**](CreateRepoOption.md)|  | [optional] 
+ **body** | [**CreateRepoOption**](CreateRepoOption.md)|  | [optional]
 
 ### Return type
 
@@ -220,9 +220,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo to fork | 
- **repo** | **str**| name of the repo to fork | 
- **body** | [**CreateForkOption**](CreateForkOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo to fork |
+ **repo** | **str**| name of the repo to fork |
+ **body** | [**CreateForkOption**](CreateForkOption.md)|  | [optional]
 
 ### Return type
 
@@ -300,9 +300,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **sha** | **str**| sha of the commit | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **sha** | **str**| sha of the commit |
 
 ### Return type
 
@@ -380,9 +380,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **sha** | **str**| sha of the tag. The Git tags API only supports annotated tag objects, not lightweight tags. | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **sha** | **str**| sha of the tag. The Git tags API only supports annotated tag objects, not lightweight tags. |
 
 ### Return type
 
@@ -463,12 +463,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **sha** | **str**| sha of the commit | 
- **recursive** | **bool**| show all directories and files | [optional] 
- **page** | **int**| page number; the &#39;truncated&#39; field in the response will be true if there are still more items after this page, false if the last page | [optional] 
- **per_page** | **int**| number of items per page; default is 1000 or what is set in app.ini as DEFAULT_GIT_TREES_PER_PAGE | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **sha** | **str**| sha of the commit |
+ **recursive** | **bool**| show all directories and files | [optional]
+ **page** | **int**| page number; the &#39;truncated&#39; field in the response will be true if there are still more items after this page, false if the last page | [optional]
+ **per_page** | **int**| number of items per page; default is 1000 or what is set in app.ini as DEFAULT_GIT_TREES_PER_PAGE | [optional]
 
 ### Return type
 
@@ -545,8 +545,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -624,10 +624,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **collaborator** | **str**| username of the collaborator to add | 
- **body** | [**AddCollaboratorOption**](AddCollaboratorOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **collaborator** | **str**| username of the collaborator to add |
+ **body** | [**AddCollaboratorOption**](AddCollaboratorOption.md)|  | [optional]
 
 ### Return type
 
@@ -704,9 +704,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **topic** | **str**| name of the topic to add | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **topic** | **str**| name of the topic to add |
 
 ### Return type
 
@@ -783,9 +783,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **collaborator** | **str**| username of the collaborator | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **collaborator** | **str**| username of the collaborator |
 
 ### Return type
 
@@ -850,7 +850,7 @@ api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
 filepath = 'filepath_example' # str | path of the file to create
-body = giteapy.CreateFileOptions() # CreateFileOptions | 
+body = giteapy.CreateFileOptions() # CreateFileOptions |
 
 try:
     # Create a file in a repository
@@ -864,10 +864,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **filepath** | **str**| path of the file to create | 
- **body** | [**CreateFileOptions**](CreateFileOptions.md)|  | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **filepath** | **str**| path of the file to create |
+ **body** | [**CreateFileOptions**](CreateFileOptions.md)|  |
 
 ### Return type
 
@@ -945,9 +945,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**CreateHookOption**](CreateHookOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreateHookOption**](CreateHookOption.md)|  | [optional]
 
 ### Return type
 
@@ -1025,9 +1025,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**CreateKeyOption**](CreateKeyOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreateKeyOption**](CreateKeyOption.md)|  | [optional]
 
 ### Return type
 
@@ -1105,9 +1105,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**CreatePullRequestOption**](CreatePullRequestOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreatePullRequestOption**](CreatePullRequestOption.md)|  | [optional]
 
 ### Return type
 
@@ -1185,9 +1185,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**CreateReleaseOption**](CreateReleaseOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreateReleaseOption**](CreateReleaseOption.md)|  | [optional]
 
 ### Return type
 
@@ -1267,11 +1267,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release | 
- **attachment** | **file**| attachment to upload | 
- **name** | **str**| name of the attachment | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release |
+ **attachment** | **file**| attachment to upload |
+ **name** | **str**| name of the attachment | [optional]
 
 ### Return type
 
@@ -1350,10 +1350,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **sha** | **str**| sha of the commit | 
- **body** | [**CreateStatusOption**](CreateStatusOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **sha** | **str**| sha of the commit |
+ **body** | [**CreateStatusOption**](CreateStatusOption.md)|  | [optional]
 
 ### Return type
 
@@ -1429,8 +1429,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo to delete | 
- **repo** | **str**| name of the repo to delete | 
+ **owner** | **str**| owner of the repo to delete |
+ **repo** | **str**| name of the repo to delete |
 
 ### Return type
 
@@ -1507,9 +1507,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **collaborator** | **str**| username of the collaborator to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **collaborator** | **str**| username of the collaborator to delete |
 
 ### Return type
 
@@ -1574,7 +1574,7 @@ api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
 filepath = 'filepath_example' # str | path of the file to delete
-body = giteapy.DeleteFileOptions() # DeleteFileOptions | 
+body = giteapy.DeleteFileOptions() # DeleteFileOptions |
 
 try:
     # Delete a file in a repository
@@ -1588,10 +1588,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **filepath** | **str**| path of the file to delete | 
- **body** | [**DeleteFileOptions**](DeleteFileOptions.md)|  | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **filepath** | **str**| path of the file to delete |
+ **body** | [**DeleteFileOptions**](DeleteFileOptions.md)|  |
 
 ### Return type
 
@@ -1668,9 +1668,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **str**| id of the hook to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **str**| id of the hook to get |
 
 ### Return type
 
@@ -1747,9 +1747,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the hook to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the hook to delete |
 
 ### Return type
 
@@ -1826,9 +1826,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the key to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the key to delete |
 
 ### Return type
 
@@ -1905,9 +1905,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release to delete |
 
 ### Return type
 
@@ -1985,10 +1985,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release | 
- **attachment_id** | **int**| id of the attachment to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release |
+ **attachment_id** | **int**| id of the attachment to delete |
 
 ### Return type
 
@@ -2065,9 +2065,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **topic** | **str**| name of the topic to delete | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **topic** | **str**| name of the topic to delete |
 
 ### Return type
 
@@ -2145,9 +2145,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo to edit | 
- **repo** | **str**| name of the repo to edit | 
- **body** | [**EditRepoOption**](EditRepoOption.md)| Properties of a repo that you can edit | [optional] 
+ **owner** | **str**| owner of the repo to edit |
+ **repo** | **str**| name of the repo to edit |
+ **body** | [**EditRepoOption**](EditRepoOption.md)| Properties of a repo that you can edit | [optional]
 
 ### Return type
 
@@ -2226,10 +2226,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **str**| id of the hook to get | 
- **body** | [**EditGitHookOption**](EditGitHookOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **str**| id of the hook to get |
+ **body** | [**EditGitHookOption**](EditGitHookOption.md)|  | [optional]
 
 ### Return type
 
@@ -2308,10 +2308,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| index of the hook | 
- **body** | [**EditHookOption**](EditHookOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| index of the hook |
+ **body** | [**EditHookOption**](EditHookOption.md)|  | [optional]
 
 ### Return type
 
@@ -2390,10 +2390,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the pull request to edit | 
- **body** | [**EditPullRequestOption**](EditPullRequestOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request to edit |
+ **body** | [**EditPullRequestOption**](EditPullRequestOption.md)|  | [optional]
 
 ### Return type
 
@@ -2472,10 +2472,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release to edit | 
- **body** | [**EditReleaseOption**](EditReleaseOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release to edit |
+ **body** | [**EditReleaseOption**](EditReleaseOption.md)|  | [optional]
 
 ### Return type
 
@@ -2555,11 +2555,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release | 
- **attachment_id** | **int**| id of the attachment to edit | 
- **body** | [**EditAttachmentOptions**](EditAttachmentOptions.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release |
+ **attachment_id** | **int**| id of the attachment to edit |
+ **body** | [**EditAttachmentOptions**](EditAttachmentOptions.md)|  | [optional]
 
 ### Return type
 
@@ -2636,8 +2636,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -2716,10 +2716,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **sha** | **str**| SHA or branch to start listing commits from (usually &#39;master&#39;) | [optional] 
- **page** | **int**| page number of requested commits | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **sha** | **str**| SHA or branch to start listing commits from (usually &#39;master&#39;) | [optional]
+ **page** | **int**| page number of requested commits | [optional]
 
 ### Return type
 
@@ -2796,9 +2796,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **archive** | **str**| archive to download, consisting of a git reference and archive | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **archive** | **str**| archive to download, consisting of a git reference and archive |
 
 ### Return type
 
@@ -2876,9 +2876,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **branch** | **str**| branch to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **branch** | **str**| branch to get |
 
 ### Return type
 
@@ -2954,7 +2954,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| id of the repo to get | 
+ **id** | **int**| id of the repo to get |
 
 ### Return type
 
@@ -3033,10 +3033,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **ref** | **str**| name of branch/tag/commit | 
- **page** | **int**| page number of results | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **ref** | **str**| name of branch/tag/commit |
+ **page** | **int**| page number of results | [optional]
 
 ### Return type
 
@@ -3115,10 +3115,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **filepath** | **str**| path of the dir, file, symlink or submodule in the repo | 
- **ref** | **str**| The name of the commit/branch/tag. Default the repository’s default branch (usually master) | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **filepath** | **str**| path of the dir, file, symlink or submodule in the repo |
+ **ref** | **str**| The name of the commit/branch/tag. Default the repository’s default branch (usually master) | [optional]
 
 ### Return type
 
@@ -3196,9 +3196,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **ref** | **str**| The name of the commit/branch/tag. Default the repository’s default branch (usually master) | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **ref** | **str**| The name of the commit/branch/tag. Default the repository’s default branch (usually master) | [optional]
 
 ### Return type
 
@@ -3275,9 +3275,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **filepath** | **str**| filepath of file to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **filepath** | **str**| filepath of file to get |
 
 ### Return type
 
@@ -3355,9 +3355,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **str**| id of the hook to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **str**| id of the hook to get |
 
 ### Return type
 
@@ -3435,9 +3435,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the hook to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the hook to get |
 
 ### Return type
 
@@ -3515,9 +3515,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the key to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the key to get |
 
 ### Return type
 
@@ -3595,9 +3595,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the pull request to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request to get |
 
 ### Return type
 
@@ -3674,9 +3674,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **filepath** | **str**| filepath of the file to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **filepath** | **str**| filepath of the file to get |
 
 ### Return type
 
@@ -3754,9 +3754,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release to get |
 
 ### Return type
 
@@ -3835,10 +3835,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release | 
- **attachment_id** | **int**| id of the attachment to get | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release |
+ **attachment_id** | **int**| id of the attachment to get |
 
 ### Return type
 
@@ -3916,9 +3916,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **sha** | **str**| the commit hash | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **sha** | **str**| the commit hash |
 
 ### Return type
 
@@ -3995,8 +3995,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -4073,8 +4073,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -4151,8 +4151,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -4229,8 +4229,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -4308,9 +4308,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **ref** | **str**| part or full name of the ref | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **ref** | **str**| part or full name of the ref |
 
 ### Return type
 
@@ -4387,8 +4387,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -4467,10 +4467,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **key_id** | **int**| the key_id to search for | [optional] 
- **fingerprint** | **str**| fingerprint of the key | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **key_id** | **int**| the key_id to search for | [optional]
+ **fingerprint** | **str**| fingerprint of the key | [optional]
 
 ### Return type
 
@@ -4552,13 +4552,13 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **page** | **int**| Page number | [optional] 
- **state** | **str**| State of pull request: open or closed (optional) | [optional] 
- **sort** | **str**| Type of sort | [optional] 
- **milestone** | **int**| ID of the milestone | [optional] 
- **labels** | [**list[int]**](int.md)| Label IDs | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **page** | **int**| Page number | [optional]
+ **state** | **str**| State of pull request: open or closed (optional) | [optional]
+ **sort** | **str**| Type of sort | [optional]
+ **milestone** | **int**| ID of the milestone | [optional]
+ **labels** | [**list[int]**](int.md)| Label IDs | [optional]
 
 ### Return type
 
@@ -4636,9 +4636,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the release | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the release |
 
 ### Return type
 
@@ -4717,10 +4717,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **page** | **int**| page wants to load | [optional] 
- **per_page** | **int**| items count every page wants to load | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **page** | **int**| page wants to load | [optional]
+ **per_page** | **int**| items count every page wants to load | [optional]
 
 ### Return type
 
@@ -4797,8 +4797,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -4879,12 +4879,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **sha** | **str**| sha of the commit | 
- **page** | **int**| page number of results | [optional] 
- **sort** | **str**| type of sort | [optional] 
- **state** | **str**| type of state | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **sha** | **str**| sha of the commit |
+ **page** | **int**| page number of results | [optional]
+ **sort** | **str**| type of sort | [optional]
+ **state** | **str**| type of state | [optional]
 
 ### Return type
 
@@ -4961,8 +4961,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -5039,8 +5039,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -5117,8 +5117,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -5196,10 +5196,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the pull request to merge | 
- **body** | [**MergePullRequestOption**](MergePullRequestOption.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request to merge |
+ **body** | [**MergePullRequestOption**](MergePullRequestOption.md)|  | [optional]
 
 ### Return type
 
@@ -5275,7 +5275,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MigrateRepoForm**](MigrateRepoForm.md)|  | [optional] 
+ **body** | [**MigrateRepoForm**](MigrateRepoForm.md)|  | [optional]
 
 ### Return type
 
@@ -5351,8 +5351,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo to sync | 
- **repo** | **str**| name of the repo to sync | 
+ **owner** | **str**| owner of the repo to sync |
+ **repo** | **str**| name of the repo to sync |
 
 ### Return type
 
@@ -5429,9 +5429,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **index** | **int**| index of the pull request | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request |
 
 ### Return type
 
@@ -5518,18 +5518,18 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| keyword | [optional] 
- **topic** | **bool**| Limit search to repositories with keyword as topic | [optional] 
- **include_desc** | **bool**| include search of keyword within repository description | [optional] 
- **uid** | **int**| search only for repos that the user with the given id owns or contributes to | [optional] 
- **starred_by** | **int**| search only for repos that the user with the given id has starred | [optional] 
- **private** | **bool**| include private repositories this user has access to (defaults to true) | [optional] 
- **page** | **int**| page number of results to return (1-based) | [optional] 
- **limit** | **int**| page size of results, maximum page size is 50 | [optional] 
- **mode** | **str**| type of repository to search for. Supported values are \&quot;fork\&quot;, \&quot;source\&quot;, \&quot;mirror\&quot; and \&quot;collaborative\&quot; | [optional] 
- **exclusive** | **bool**| if &#x60;uid&#x60; is given, search only for repos that the user owns | [optional] 
- **sort** | **str**| sort repos by attribute. Supported values are \&quot;alpha\&quot;, \&quot;created\&quot;, \&quot;updated\&quot;, \&quot;size\&quot;, and \&quot;id\&quot;. Default is \&quot;alpha\&quot; | [optional] 
- **order** | **str**| sort order, either \&quot;asc\&quot; (ascending) or \&quot;desc\&quot; (descending). Default is \&quot;asc\&quot;, ignored if \&quot;sort\&quot; is not specified. | [optional] 
+ **q** | **str**| keyword | [optional]
+ **topic** | **bool**| Limit search to repositories with keyword as topic | [optional]
+ **include_desc** | **bool**| include search of keyword within repository description | [optional]
+ **uid** | **int**| search only for repos that the user with the given id owns or contributes to | [optional]
+ **starred_by** | **int**| search only for repos that the user with the given id has starred | [optional]
+ **private** | **bool**| include private repositories this user has access to (defaults to true) | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
+ **mode** | **str**| type of repository to search for. Supported values are \&quot;fork\&quot;, \&quot;source\&quot;, \&quot;mirror\&quot; and \&quot;collaborative\&quot; | [optional]
+ **exclusive** | **bool**| if &#x60;uid&#x60; is given, search only for repos that the user owns | [optional]
+ **sort** | **str**| sort repos by attribute. Supported values are \&quot;alpha\&quot;, \&quot;created\&quot;, \&quot;updated\&quot;, \&quot;size\&quot;, and \&quot;id\&quot;. Default is \&quot;alpha\&quot; | [optional]
+ **order** | **str**| sort order, either \&quot;asc\&quot; (ascending) or \&quot;desc\&quot; (descending). Default is \&quot;asc\&quot;, ignored if \&quot;sort\&quot; is not specified. | [optional]
 
 ### Return type
 
@@ -5606,8 +5606,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -5684,9 +5684,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **id** | **int**| id of the hook to test | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **id** | **int**| id of the hook to test |
 
 ### Return type
 
@@ -5763,8 +5763,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -5829,7 +5829,7 @@ api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
 filepath = 'filepath_example' # str | path of the file to update
-body = giteapy.UpdateFileOptions() # UpdateFileOptions | 
+body = giteapy.UpdateFileOptions() # UpdateFileOptions |
 
 try:
     # Update a file in a repository
@@ -5843,10 +5843,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **filepath** | **str**| path of the file to update | 
- **body** | [**UpdateFileOptions**](UpdateFileOptions.md)|  | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **filepath** | **str**| path of the file to update |
+ **body** | [**UpdateFileOptions**](UpdateFileOptions.md)|  |
 
 ### Return type
 
@@ -5923,9 +5923,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
- **body** | [**RepoTopicOptions**](RepoTopicOptions.md)|  | [optional] 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**RepoTopicOptions**](RepoTopicOptions.md)|  | [optional]
 
 ### Return type
 
@@ -6001,7 +6001,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **q** | **str**| keywords to search | 
+ **q** | **str**| keywords to search |
 
 ### Return type
 
@@ -6078,8 +6078,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -6155,8 +6155,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 
@@ -6233,8 +6233,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **owner** | **str**| owner of the repo | 
- **repo** | **str**| name of the repo | 
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
 
 ### Return type
 

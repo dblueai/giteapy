@@ -1,6 +1,6 @@
 # giteapy.AdminApi
 
-All URIs are relative to *http://localhost/api/v1*
+All URIs are relative to *http://localhost:3000/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -61,7 +61,7 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
 username = 'username_example' # str | username of the user that will own the created organization
-organization = giteapy.CreateOrgOption() # CreateOrgOption | 
+organization = giteapy.CreateOrgOption() # CreateOrgOption |
 
 try:
     # Create an organization
@@ -75,8 +75,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of the user that will own the created organization | 
- **organization** | [**CreateOrgOption**](CreateOrgOption.md)|  | 
+ **username** | **str**| username of the user that will own the created organization |
+ **organization** | [**CreateOrgOption**](CreateOrgOption.md)|  |
 
 ### Return type
 
@@ -153,8 +153,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of the user | 
- **key** | [**CreateKeyOption**](CreateKeyOption.md)|  | [optional] 
+ **username** | **str**| username of the user |
+ **key** | [**CreateKeyOption**](CreateKeyOption.md)|  | [optional]
 
 ### Return type
 
@@ -217,7 +217,7 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
 username = 'username_example' # str | username of the user. This user will own the created repository
-repository = giteapy.CreateRepoOption() # CreateRepoOption | 
+repository = giteapy.CreateRepoOption() # CreateRepoOption |
 
 try:
     # Create a repository on behalf a user
@@ -231,8 +231,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of the user. This user will own the created repository | 
- **repository** | [**CreateRepoOption**](CreateRepoOption.md)|  | 
+ **username** | **str**| username of the user. This user will own the created repository |
+ **repository** | [**CreateRepoOption**](CreateRepoOption.md)|  |
 
 ### Return type
 
@@ -308,7 +308,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CreateUserOption**](CreateUserOption.md)|  | [optional] 
+ **body** | [**CreateUserOption**](CreateUserOption.md)|  | [optional]
 
 ### Return type
 
@@ -383,7 +383,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user to delete | 
+ **username** | **str**| username of user to delete |
 
 ### Return type
 
@@ -459,8 +459,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user | 
- **id** | **int**| id of the key to delete | 
+ **username** | **str**| username of user |
+ **id** | **int**| id of the key to delete |
 
 ### Return type
 
@@ -537,8 +537,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of user to edit | 
- **body** | [**EditUserOption**](EditUserOption.md)|  | [optional] 
+ **username** | **str**| username of user to edit |
+ **body** | [**EditUserOption**](EditUserOption.md)|  | [optional]
 
 ### Return type
 
@@ -615,8 +615,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| page number of results to return (1-based) | [optional] 
- **limit** | **int**| page size of results, maximum page size is 50 | [optional] 
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
