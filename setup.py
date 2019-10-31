@@ -16,8 +16,6 @@ from setuptools import setup, find_packages  # noqa: H301
 def read_readme():
     with open('README.md') as f:
         return f.read()
-
-
 NAME = "giteapy"
 VERSION = "1.0.2"
 # To install the library, run the following

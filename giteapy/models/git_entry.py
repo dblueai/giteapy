@@ -36,7 +36,8 @@ class GitEntry(object):
         'sha': 'str',
         'size': 'int',
         'type': 'str',
-        'url': 'str'
+        'url': 'str',
+        'modified_at': 'str'
     }
 
     attribute_map = {
@@ -45,10 +46,11 @@ class GitEntry(object):
         'sha': 'sha',
         'size': 'size',
         'type': 'type',
-        'url': 'url'
+        'url': 'url',
+        'modified_at': 'modified_at'
     }
 
-    def __init__(self, mode=None, path=None, sha=None, size=None, type=None, url=None):  # noqa: E501
+    def __init__(self, mode=None, path=None, sha=None, size=None, type=None, url=None, modified_at=None):  # noqa: E501
         """GitEntry - a model defined in Swagger"""  # noqa: E501
 
         self._mode = None
@@ -57,6 +59,7 @@ class GitEntry(object):
         self._size = None
         self._type = None
         self._url = None
+        self._modified_at = None
         self.discriminator = None
 
         if mode is not None:
@@ -71,6 +74,8 @@ class GitEntry(object):
             self.type = type
         if url is not None:
             self.url = url
+        if modified_at is not None:
+            self.modified_at = modified_at
 
     @property
     def mode(self):
@@ -197,6 +202,27 @@ class GitEntry(object):
         """
 
         self._url = url
+
+    @property
+    def modified_at(self):
+        """Gets the modified_at of this GitEntry.  # noqa: E501
+
+
+        :return: The modified_at of this GitEntry.  # noqa: E501
+        :rtype: str
+        """
+        return self._modified_at
+
+    @modified_at.setter
+    def modified_at(self, modified_at):
+        """Sets the modified_at of this GitEntry.
+
+
+        :param modified_at: The modified_at of this GitEntry.  # noqa: E501
+        :type: str
+        """
+
+        self._modified_at = modified_at
 
     def to_dict(self):
         """Returns the model properties as a dict"""
