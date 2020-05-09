@@ -507,10 +507,8 @@ class ApiClient(object):
                     continue
                 elif auth_setting['in'] == 'header':
                     headers[auth_setting['key']] = auth_setting['value']
-                    break
                 elif auth_setting['in'] == 'query':
                     querys.append((auth_setting['key'], auth_setting['value']))
-                    break
                 else:
                     raise ValueError(
                         'Authentication token must be in `query` or `header`'

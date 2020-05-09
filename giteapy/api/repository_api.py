@@ -597,6 +597,8 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Repository]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -619,12 +621,14 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Repository]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -657,6 +661,10 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -1027,6 +1035,115 @@ class RepositoryApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_create_branch_protection(self, owner, repo, **kwargs):  # noqa: E501
+        """Create a branch protections for a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_create_branch_protection(owner, repo, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param CreateBranchProtectionOption body:
+        :return: BranchProtection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_create_branch_protection_with_http_info(owner, repo, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_create_branch_protection_with_http_info(owner, repo, **kwargs)  # noqa: E501
+            return data
+
+    def repo_create_branch_protection_with_http_info(self, owner, repo, **kwargs):  # noqa: E501
+        """Create a branch protections for a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_create_branch_protection_with_http_info(owner, repo, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param CreateBranchProtectionOption body:
+        :return: BranchProtection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_create_branch_protection" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_create_branch_protection`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_create_branch_protection`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/branch_protections', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='BranchProtection',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1482,6 +1599,127 @@ class RepositoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def repo_create_pull_review(self, owner, repo, index, body, **kwargs):  # noqa: E501
+        """Create a review to an pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_create_pull_review(owner, repo, index, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param CreatePullReviewOptions body: (required)
+        :return: PullReview
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_create_pull_review_with_http_info(owner, repo, index, body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_create_pull_review_with_http_info(owner, repo, index, body, **kwargs)  # noqa: E501
+            return data
+
+    def repo_create_pull_review_with_http_info(self, owner, repo, index, body, **kwargs):  # noqa: E501
+        """Create a review to an pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_create_pull_review_with_http_info(owner, repo, index, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param CreatePullReviewOptions body: (required)
+        :return: PullReview
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'index', 'body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_create_pull_review" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_create_pull_review`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_create_pull_review`")  # noqa: E501
+        # verify the required parameter 'index' is set
+        if ('index' not in params or
+                params['index'] is None):
+            raise ValueError("Missing the required parameter `index` when calling `repo_create_pull_review`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `repo_create_pull_review`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'index' in params:
+            path_params['index'] = params['index']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/pulls/{index}/reviews', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PullReview',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def repo_create_release(self, owner, repo, **kwargs):  # noqa: E501
         """Create a release  # noqa: E501
 
@@ -1729,7 +1967,7 @@ class RepositoryApi(object):
         :param str repo: name of the repo (required)
         :param str sha: sha of the commit (required)
         :param CreateStatusOption body:
-        :return: list[Status]
+        :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1753,7 +1991,7 @@ class RepositoryApi(object):
         :param str repo: name of the repo (required)
         :param str sha: sha of the commit (required)
         :param CreateStatusOption body:
-        :return: list[Status]
+        :return: Status
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1825,7 +2063,7 @@ class RepositoryApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[Status]',  # noqa: E501
+            response_type='Status',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1924,6 +2162,232 @@ class RepositoryApi(object):
 
         return self.api_client.call_api(
             '/repos/{owner}/{repo}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_delete_branch(self, owner, repo, branch, **kwargs):  # noqa: E501
+        """Delete a specific branch from a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_delete_branch(owner, repo, branch, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str branch: branch to delete (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_delete_branch_with_http_info(owner, repo, branch, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_delete_branch_with_http_info(owner, repo, branch, **kwargs)  # noqa: E501
+            return data
+
+    def repo_delete_branch_with_http_info(self, owner, repo, branch, **kwargs):  # noqa: E501
+        """Delete a specific branch from a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_delete_branch_with_http_info(owner, repo, branch, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str branch: branch to delete (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'branch']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_delete_branch" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_delete_branch`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_delete_branch`")  # noqa: E501
+        # verify the required parameter 'branch' is set
+        if ('branch' not in params or
+                params['branch'] is None):
+            raise ValueError("Missing the required parameter `branch` when calling `repo_delete_branch`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'branch' in params:
+            path_params['branch'] = params['branch']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/branches/{branch}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_delete_branch_protection(self, owner, repo, name, **kwargs):  # noqa: E501
+        """Delete a specific branch protection for the repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_delete_branch_protection(owner, repo, name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str name: name of protected branch (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_delete_branch_protection_with_http_info(owner, repo, name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_delete_branch_protection_with_http_info(owner, repo, name, **kwargs)  # noqa: E501
+            return data
+
+    def repo_delete_branch_protection_with_http_info(self, owner, repo, name, **kwargs):  # noqa: E501
+        """Delete a specific branch protection for the repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_delete_branch_protection_with_http_info(owner, repo, name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str name: name of protected branch (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'name']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_delete_branch_protection" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_delete_branch_protection`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_delete_branch_protection`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `repo_delete_branch_protection`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/branch_protections/{name}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -2511,6 +2975,127 @@ class RepositoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def repo_delete_pull_review(self, owner, repo, index, id, **kwargs):  # noqa: E501
+        """Delete a specific review from a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_delete_pull_review(owner, repo, index, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_delete_pull_review_with_http_info(owner, repo, index, id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_delete_pull_review_with_http_info(owner, repo, index, id, **kwargs)  # noqa: E501
+            return data
+
+    def repo_delete_pull_review_with_http_info(self, owner, repo, index, id, **kwargs):  # noqa: E501
+        """Delete a specific review from a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_delete_pull_review_with_http_info(owner, repo, index, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'index', 'id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_delete_pull_review" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_delete_pull_review`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_delete_pull_review`")  # noqa: E501
+        # verify the required parameter 'index' is set
+        if ('index' not in params or
+                params['index'] is None):
+            raise ValueError("Missing the required parameter `index` when calling `repo_delete_pull_review`")  # noqa: E501
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `repo_delete_pull_review`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'index' in params:
+            path_params['index'] = params['index']  # noqa: E501
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/pulls/{index}/reviews/{id}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def repo_delete_release(self, owner, repo, id, **kwargs):  # noqa: E501
         """Delete a release  # noqa: E501
 
@@ -2967,6 +3552,123 @@ class RepositoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def repo_edit_branch_protection(self, owner, repo, name, **kwargs):  # noqa: E501
+        """Edit a branch protections for a repository. Only fields that are set will be changed  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_edit_branch_protection(owner, repo, name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str name: name of protected branch (required)
+        :param EditBranchProtectionOption body:
+        :return: BranchProtection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_edit_branch_protection_with_http_info(owner, repo, name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_edit_branch_protection_with_http_info(owner, repo, name, **kwargs)  # noqa: E501
+            return data
+
+    def repo_edit_branch_protection_with_http_info(self, owner, repo, name, **kwargs):  # noqa: E501
+        """Edit a branch protections for a repository. Only fields that are set will be changed  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_edit_branch_protection_with_http_info(owner, repo, name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str name: name of protected branch (required)
+        :param EditBranchProtectionOption body:
+        :return: BranchProtection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'name', 'body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_edit_branch_protection" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_edit_branch_protection`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_edit_branch_protection`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `repo_edit_branch_protection`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/branch_protections/{name}', 'PATCH',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='BranchProtection',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def repo_edit_git_hook(self, owner, repo, id, **kwargs):  # noqa: E501
         """Edit a Git hook in a repository  # noqa: E501
 
@@ -3202,7 +3904,7 @@ class RepositoryApi(object):
             collection_formats=collection_formats)
 
     def repo_edit_pull_request(self, owner, repo, index, **kwargs):  # noqa: E501
-        """Update a pull request  # noqa: E501
+        """Update a pull request. If using deadline only the date will be taken into account, and time of day ignored.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -3226,7 +3928,7 @@ class RepositoryApi(object):
             return data
 
     def repo_edit_pull_request_with_http_info(self, owner, repo, index, **kwargs):  # noqa: E501
-        """Update a pull request  # noqa: E501
+        """Update a pull request. If using deadline only the date will be taken into account, and time of day ignored.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -3677,7 +4379,8 @@ class RepositoryApi(object):
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
         :param str sha: SHA or branch to start listing commits from (usually 'master')
-        :param int page: page number of requested commits
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Commit]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3701,13 +4404,14 @@ class RepositoryApi(object):
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
         :param str sha: SHA or branch to start listing commits from (usually 'master')
-        :param int page: page number of requested commits
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Commit]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo', 'sha', 'page']  # noqa: E501
+        all_params = ['owner', 'repo', 'sha', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3744,6 +4448,8 @@ class RepositoryApi(object):
             query_params.append(('sha', params['sha']))  # noqa: E501
         if 'page' in params:
             query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -3866,7 +4572,7 @@ class RepositoryApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json', 'application/octet-stream'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
@@ -3887,12 +4593,12 @@ class RepositoryApi(object):
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', False),
+            _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
     def repo_get_branch(self, owner, repo, branch, **kwargs):  # noqa: E501
-        """Retrieve a specific branch from a repository  # noqa: E501
+        """Retrieve a specific branch from a repository, including its effective branch protection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -3915,7 +4621,7 @@ class RepositoryApi(object):
             return data
 
     def repo_get_branch_with_http_info(self, owner, repo, branch, **kwargs):  # noqa: E501
-        """Retrieve a specific branch from a repository  # noqa: E501
+        """Retrieve a specific branch from a repository, including its effective branch protection  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -3997,6 +4703,119 @@ class RepositoryApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='Branch',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_get_branch_protection(self, owner, repo, name, **kwargs):  # noqa: E501
+        """Get a specific branch protection for the repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_branch_protection(owner, repo, name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str name: name of protected branch (required)
+        :return: BranchProtection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_get_branch_protection_with_http_info(owner, repo, name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_get_branch_protection_with_http_info(owner, repo, name, **kwargs)  # noqa: E501
+            return data
+
+    def repo_get_branch_protection_with_http_info(self, owner, repo, name, **kwargs):  # noqa: E501
+        """Get a specific branch protection for the repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_branch_protection_with_http_info(owner, repo, name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str name: name of protected branch (required)
+        :return: BranchProtection
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'name']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_get_branch_protection" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_get_branch_protection`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_get_branch_protection`")  # noqa: E501
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `repo_get_branch_protection`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/branch_protections/{name}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='BranchProtection',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -5009,6 +5828,248 @@ class RepositoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def repo_get_pull_review(self, owner, repo, index, id, **kwargs):  # noqa: E501
+        """Get a specific review for a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_pull_review(owner, repo, index, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :return: PullReview
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_get_pull_review_with_http_info(owner, repo, index, id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_get_pull_review_with_http_info(owner, repo, index, id, **kwargs)  # noqa: E501
+            return data
+
+    def repo_get_pull_review_with_http_info(self, owner, repo, index, id, **kwargs):  # noqa: E501
+        """Get a specific review for a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_pull_review_with_http_info(owner, repo, index, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :return: PullReview
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'index', 'id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_get_pull_review" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_get_pull_review`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_get_pull_review`")  # noqa: E501
+        # verify the required parameter 'index' is set
+        if ('index' not in params or
+                params['index'] is None):
+            raise ValueError("Missing the required parameter `index` when calling `repo_get_pull_review`")  # noqa: E501
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `repo_get_pull_review`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'index' in params:
+            path_params['index'] = params['index']  # noqa: E501
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/pulls/{index}/reviews/{id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PullReview',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_get_pull_review_comments(self, owner, repo, index, id, **kwargs):  # noqa: E501
+        """Get a specific review for a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_pull_review_comments(owner, repo, index, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :return: list[PullReviewComment]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_get_pull_review_comments_with_http_info(owner, repo, index, id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_get_pull_review_comments_with_http_info(owner, repo, index, id, **kwargs)  # noqa: E501
+            return data
+
+    def repo_get_pull_review_comments_with_http_info(self, owner, repo, index, id, **kwargs):  # noqa: E501
+        """Get a specific review for a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_pull_review_comments_with_http_info(owner, repo, index, id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :return: list[PullReviewComment]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'index', 'id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_get_pull_review_comments" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_get_pull_review_comments`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_get_pull_review_comments`")  # noqa: E501
+        # verify the required parameter 'index' is set
+        if ('index' not in params or
+                params['index'] is None):
+            raise ValueError("Missing the required parameter `index` when calling `repo_get_pull_review_comments`")  # noqa: E501
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `repo_get_pull_review_comments`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'index' in params:
+            path_params['index'] = params['index']  # noqa: E501
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/pulls/{index}/reviews/{id}/comments', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[PullReviewComment]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def repo_get_raw_file(self, owner, repo, filepath, **kwargs):  # noqa: E501
         """Get a file from a repository  # noqa: E501
 
@@ -5118,7 +6179,7 @@ class RepositoryApi(object):
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', False),
+            _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
@@ -5356,12 +6417,125 @@ class RepositoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def repo_get_single_commit(self, owner, repo, sha, **kwargs):  # noqa: E501
+    def repo_get_single_commit_by_ref(self, owner, repo, ref, **kwargs):  # noqa: E501
         """Get a single commit from a repository  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.repo_get_single_commit(owner, repo, sha, async_req=True)
+        >>> thread = api.repo_get_single_commit_by_ref(owner, repo, ref, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str ref: a git ref (required)
+        :return: Commit
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_get_single_commit_by_ref_with_http_info(owner, repo, ref, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_get_single_commit_by_ref_with_http_info(owner, repo, ref, **kwargs)  # noqa: E501
+            return data
+
+    def repo_get_single_commit_by_ref_with_http_info(self, owner, repo, ref, **kwargs):  # noqa: E501
+        """Get a single commit from a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_single_commit_by_ref_with_http_info(owner, repo, ref, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str ref: a git ref (required)
+        :return: Commit
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'ref']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_get_single_commit_by_ref" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_get_single_commit_by_ref`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_get_single_commit_by_ref`")  # noqa: E501
+        # verify the required parameter 'ref' is set
+        if ('ref' not in params or
+                params['ref'] is None):
+            raise ValueError("Missing the required parameter `ref` when calling `repo_get_single_commit_by_ref`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'ref' in params:
+            path_params['ref'] = params['ref']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/commits/{ref}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Commit',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_get_single_commit_by_sha(self, owner, repo, sha, **kwargs):  # noqa: E501
+        """Get a single commit from a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_get_single_commit_by_sha(owner, repo, sha, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -5374,17 +6548,17 @@ class RepositoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.repo_get_single_commit_with_http_info(owner, repo, sha, **kwargs)  # noqa: E501
+            return self.repo_get_single_commit_by_sha_with_http_info(owner, repo, sha, **kwargs)  # noqa: E501
         else:
-            (data) = self.repo_get_single_commit_with_http_info(owner, repo, sha, **kwargs)  # noqa: E501
+            (data) = self.repo_get_single_commit_by_sha_with_http_info(owner, repo, sha, **kwargs)  # noqa: E501
             return data
 
-    def repo_get_single_commit_with_http_info(self, owner, repo, sha, **kwargs):  # noqa: E501
+    def repo_get_single_commit_by_sha_with_http_info(self, owner, repo, sha, **kwargs):  # noqa: E501
         """Get a single commit from a repository  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.repo_get_single_commit_with_http_info(owner, repo, sha, async_req=True)
+        >>> thread = api.repo_get_single_commit_by_sha_with_http_info(owner, repo, sha, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -5407,22 +6581,22 @@ class RepositoryApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method repo_get_single_commit" % key
+                    " to method repo_get_single_commit_by_sha" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'owner' is set
         if ('owner' not in params or
                 params['owner'] is None):
-            raise ValueError("Missing the required parameter `owner` when calling `repo_get_single_commit`")  # noqa: E501
+            raise ValueError("Missing the required parameter `owner` when calling `repo_get_single_commit_by_sha`")  # noqa: E501
         # verify the required parameter 'repo' is set
         if ('repo' not in params or
                 params['repo'] is None):
-            raise ValueError("Missing the required parameter `repo` when calling `repo_get_single_commit`")  # noqa: E501
+            raise ValueError("Missing the required parameter `repo` when calling `repo_get_single_commit_by_sha`")  # noqa: E501
         # verify the required parameter 'sha' is set
         if ('sha' not in params or
                 params['sha'] is None):
-            raise ValueError("Missing the required parameter `sha` when calling `repo_get_single_commit`")  # noqa: E501
+            raise ValueError("Missing the required parameter `sha` when calling `repo_get_single_commit_by_sha`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5574,6 +6748,111 @@ class RepositoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def repo_list_branch_protection(self, owner, repo, **kwargs):  # noqa: E501
+        """List branch protections for a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_list_branch_protection(owner, repo, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :return: list[BranchProtection]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_list_branch_protection_with_http_info(owner, repo, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_list_branch_protection_with_http_info(owner, repo, **kwargs)  # noqa: E501
+            return data
+
+    def repo_list_branch_protection_with_http_info(self, owner, repo, **kwargs):  # noqa: E501
+        """List branch protections for a repository  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_list_branch_protection_with_http_info(owner, repo, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :return: list[BranchProtection]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_list_branch_protection" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_list_branch_protection`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_list_branch_protection`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/branch_protections', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[BranchProtection]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def repo_list_branches(self, owner, repo, **kwargs):  # noqa: E501
         """List a repository's branches  # noqa: E501
 
@@ -5690,6 +6969,8 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[User]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -5712,12 +6993,14 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[User]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5750,6 +7033,10 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6013,6 +7300,8 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Hook]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6035,12 +7324,14 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Hook]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6073,6 +7364,10 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6120,6 +7415,8 @@ class RepositoryApi(object):
         :param str repo: name of the repo (required)
         :param int key_id: the key_id to search for
         :param str fingerprint: fingerprint of the key
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[DeployKey]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6144,12 +7441,14 @@ class RepositoryApi(object):
         :param str repo: name of the repo (required)
         :param int key_id: the key_id to search for
         :param str fingerprint: fingerprint of the key
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[DeployKey]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo', 'key_id', 'fingerprint']  # noqa: E501
+        all_params = ['owner', 'repo', 'key_id', 'fingerprint', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6186,6 +7485,10 @@ class RepositoryApi(object):
             query_params.append(('key_id', params['key_id']))  # noqa: E501
         if 'fingerprint' in params:
             query_params.append(('fingerprint', params['fingerprint']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6231,11 +7534,12 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
-        :param int page: Page number
         :param str state: State of pull request: open or closed (optional)
         :param str sort: Type of sort
         :param int milestone: ID of the milestone
         :param list[int] labels: Label IDs
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[PullRequest]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6258,17 +7562,18 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
-        :param int page: Page number
         :param str state: State of pull request: open or closed (optional)
         :param str sort: Type of sort
         :param int milestone: ID of the milestone
         :param list[int] labels: Label IDs
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[PullRequest]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo', 'page', 'state', 'sort', 'milestone', 'labels']  # noqa: E501
+        all_params = ['owner', 'repo', 'state', 'sort', 'milestone', 'labels', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6301,8 +7606,6 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
-        if 'page' in params:
-            query_params.append(('page', params['page']))  # noqa: E501
         if 'state' in params:
             query_params.append(('state', params['state']))  # noqa: E501
         if 'sort' in params:
@@ -6312,6 +7615,10 @@ class RepositoryApi(object):
         if 'labels' in params:
             query_params.append(('labels', params['labels']))  # noqa: E501
             collection_formats['labels'] = 'multi'  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6339,6 +7646,127 @@ class RepositoryApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='list[PullRequest]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_list_pull_reviews(self, owner, repo, index, **kwargs):  # noqa: E501
+        """List all reviews for a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_list_pull_reviews(owner, repo, index, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
+        :return: list[PullReview]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_list_pull_reviews_with_http_info(owner, repo, index, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_list_pull_reviews_with_http_info(owner, repo, index, **kwargs)  # noqa: E501
+            return data
+
+    def repo_list_pull_reviews_with_http_info(self, owner, repo, index, **kwargs):  # noqa: E501
+        """List all reviews for a pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_list_pull_reviews_with_http_info(owner, repo, index, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
+        :return: list[PullReview]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'index', 'page', 'limit']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_list_pull_reviews" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_list_pull_reviews`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_list_pull_reviews`")  # noqa: E501
+        # verify the required parameter 'index' is set
+        if ('index' not in params or
+                params['index'] is None):
+            raise ValueError("Missing the required parameter `index` when calling `repo_list_pull_reviews`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'index' in params:
+            path_params['index'] = params['index']  # noqa: E501
+
+        query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/pulls/{index}/reviews', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[PullReview]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -6470,8 +7898,9 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
-        :param int page: page wants to load
         :param int per_page: items count every page wants to load
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Release]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6494,14 +7923,15 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
-        :param int page: page wants to load
         :param int per_page: items count every page wants to load
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Release]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo', 'page', 'per_page']  # noqa: E501
+        all_params = ['owner', 'repo', 'per_page', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6534,10 +7964,12 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
-        if 'page' in params:
-            query_params.append(('page', params['page']))  # noqa: E501
         if 'per_page' in params:
             query_params.append(('per_page', params['per_page']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6583,6 +8015,8 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[User]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6605,12 +8039,14 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[User]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6643,6 +8079,10 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6689,9 +8129,10 @@ class RepositoryApi(object):
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
         :param str sha: sha of the commit (required)
-        :param int page: page number of results
         :param str sort: type of sort
         :param str state: type of state
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Status]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6715,15 +8156,16 @@ class RepositoryApi(object):
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
         :param str sha: sha of the commit (required)
-        :param int page: page number of results
         :param str sort: type of sort
         :param str state: type of state
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[Status]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo', 'sha', 'page', 'sort', 'state']  # noqa: E501
+        all_params = ['owner', 'repo', 'sha', 'sort', 'state', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6762,12 +8204,14 @@ class RepositoryApi(object):
             path_params['sha'] = params['sha']  # noqa: E501
 
         query_params = []
-        if 'page' in params:
-            query_params.append(('page', params['page']))  # noqa: E501
         if 'sort' in params:
             query_params.append(('sort', params['sort']))  # noqa: E501
         if 'state' in params:
             query_params.append(('state', params['state']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6813,6 +8257,8 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[User]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6835,12 +8281,14 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[User]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6873,6 +8321,10 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -6918,6 +8370,8 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, default maximum page size is 50
         :return: list[Tag]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -6940,12 +8394,14 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, default maximum page size is 50
         :return: list[Tag]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6978,6 +8434,10 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -7023,6 +8483,8 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: TopicName
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7045,12 +8507,14 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: TopicName
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7083,6 +8547,10 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -7558,14 +9026,16 @@ class RepositoryApi(object):
         :param bool topic: Limit search to repositories with keyword as topic
         :param bool include_desc: include search of keyword within repository description
         :param int uid: search only for repos that the user with the given id owns or contributes to
+        :param int priority_owner_id: repo owner to prioritize in the results
         :param int starred_by: search only for repos that the user with the given id has starred
         :param bool private: include private repositories this user has access to (defaults to true)
-        :param int page: page number of results to return (1-based)
-        :param int limit: page size of results, maximum page size is 50
+        :param bool template: include template repositories this user has access to (defaults to true)
         :param str mode: type of repository to search for. Supported values are \"fork\", \"source\", \"mirror\" and \"collaborative\"
         :param bool exclusive: if `uid` is given, search only for repos that the user owns
         :param str sort: sort repos by attribute. Supported values are \"alpha\", \"created\", \"updated\", \"size\", and \"id\". Default is \"alpha\"
         :param str order: sort order, either \"asc\" (ascending) or \"desc\" (descending). Default is \"asc\", ignored if \"sort\" is not specified.
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: SearchResults
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7590,20 +9060,22 @@ class RepositoryApi(object):
         :param bool topic: Limit search to repositories with keyword as topic
         :param bool include_desc: include search of keyword within repository description
         :param int uid: search only for repos that the user with the given id owns or contributes to
+        :param int priority_owner_id: repo owner to prioritize in the results
         :param int starred_by: search only for repos that the user with the given id has starred
         :param bool private: include private repositories this user has access to (defaults to true)
-        :param int page: page number of results to return (1-based)
-        :param int limit: page size of results, maximum page size is 50
+        :param bool template: include template repositories this user has access to (defaults to true)
         :param str mode: type of repository to search for. Supported values are \"fork\", \"source\", \"mirror\" and \"collaborative\"
         :param bool exclusive: if `uid` is given, search only for repos that the user owns
         :param str sort: sort repos by attribute. Supported values are \"alpha\", \"created\", \"updated\", \"size\", and \"id\". Default is \"alpha\"
         :param str order: sort order, either \"asc\" (ascending) or \"desc\" (descending). Default is \"asc\", ignored if \"sort\" is not specified.
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: SearchResults
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['q', 'topic', 'include_desc', 'uid', 'starred_by', 'private', 'page', 'limit', 'mode', 'exclusive', 'sort', 'order']  # noqa: E501
+        all_params = ['q', 'topic', 'include_desc', 'uid', 'priority_owner_id', 'starred_by', 'private', 'template', 'mode', 'exclusive', 'sort', 'order', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7632,14 +9104,14 @@ class RepositoryApi(object):
             query_params.append(('includeDesc', params['include_desc']))  # noqa: E501
         if 'uid' in params:
             query_params.append(('uid', params['uid']))  # noqa: E501
+        if 'priority_owner_id' in params:
+            query_params.append(('priority_owner_id', params['priority_owner_id']))  # noqa: E501
         if 'starred_by' in params:
             query_params.append(('starredBy', params['starred_by']))  # noqa: E501
         if 'private' in params:
             query_params.append(('private', params['private']))  # noqa: E501
-        if 'page' in params:
-            query_params.append(('page', params['page']))  # noqa: E501
-        if 'limit' in params:
-            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'template' in params:
+            query_params.append(('template', params['template']))  # noqa: E501
         if 'mode' in params:
             query_params.append(('mode', params['mode']))  # noqa: E501
         if 'exclusive' in params:
@@ -7648,6 +9120,10 @@ class RepositoryApi(object):
             query_params.append(('sort', params['sort']))  # noqa: E501
         if 'order' in params:
             query_params.append(('order', params['order']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -7787,6 +9263,135 @@ class RepositoryApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def repo_submit_pull_review(self, owner, repo, index, id, body, **kwargs):  # noqa: E501
+        """Submit a pending review to an pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_submit_pull_review(owner, repo, index, id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :param SubmitPullReviewOptions body: (required)
+        :return: PullReview
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_submit_pull_review_with_http_info(owner, repo, index, id, body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_submit_pull_review_with_http_info(owner, repo, index, id, body, **kwargs)  # noqa: E501
+            return data
+
+    def repo_submit_pull_review_with_http_info(self, owner, repo, index, id, body, **kwargs):  # noqa: E501
+        """Submit a pending review to an pull request  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_submit_pull_review_with_http_info(owner, repo, index, id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param int index: index of the pull request (required)
+        :param int id: id of the review (required)
+        :param SubmitPullReviewOptions body: (required)
+        :return: PullReview
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'index', 'id', 'body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_submit_pull_review" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_submit_pull_review`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_submit_pull_review`")  # noqa: E501
+        # verify the required parameter 'index' is set
+        if ('index' not in params or
+                params['index'] is None):
+            raise ValueError("Missing the required parameter `index` when calling `repo_submit_pull_review`")  # noqa: E501
+        # verify the required parameter 'id' is set
+        if ('id' not in params or
+                params['id'] is None):
+            raise ValueError("Missing the required parameter `id` when calling `repo_submit_pull_review`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `repo_submit_pull_review`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'index' in params:
+            path_params['index'] = params['index']  # noqa: E501
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/pulls/{index}/reviews/{id}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PullReview',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def repo_test_hook(self, owner, repo, id, **kwargs):  # noqa: E501
         """Test a push webhook  # noqa: E501
 
@@ -7911,6 +9516,11 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param str user: optional filter by user
+        :param datetime since: Only show times updated after the given time. This is a timestamp in RFC 3339 format
+        :param datetime before: Only show times updated before the given time. This is a timestamp in RFC 3339 format
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[TrackedTime]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7933,12 +9543,17 @@ class RepositoryApi(object):
         :param async_req bool
         :param str owner: owner of the repo (required)
         :param str repo: name of the repo (required)
+        :param str user: optional filter by user
+        :param datetime since: Only show times updated after the given time. This is a timestamp in RFC 3339 format
+        :param datetime before: Only show times updated before the given time. This is a timestamp in RFC 3339 format
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[TrackedTime]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['owner', 'repo']  # noqa: E501
+        all_params = ['owner', 'repo', 'user', 'since', 'before', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7971,6 +9586,16 @@ class RepositoryApi(object):
             path_params['repo'] = params['repo']  # noqa: E501
 
         query_params = []
+        if 'user' in params:
+            query_params.append(('user', params['user']))  # noqa: E501
+        if 'since' in params:
+            query_params.append(('since', params['since']))  # noqa: E501
+        if 'before' in params:
+            query_params.append(('before', params['before']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -7998,6 +9623,119 @@ class RepositoryApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='list[TrackedTime]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def repo_transfer(self, owner, repo, body, **kwargs):  # noqa: E501
+        """Transfer a repo ownership  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_transfer(owner, repo, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo to transfer (required)
+        :param str repo: name of the repo to transfer (required)
+        :param TransferRepoOption body: Transfer Options (required)
+        :return: Repository
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.repo_transfer_with_http_info(owner, repo, body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.repo_transfer_with_http_info(owner, repo, body, **kwargs)  # noqa: E501
+            return data
+
+    def repo_transfer_with_http_info(self, owner, repo, body, **kwargs):  # noqa: E501
+        """Transfer a repo ownership  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.repo_transfer_with_http_info(owner, repo, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo to transfer (required)
+        :param str repo: name of the repo to transfer (required)
+        :param TransferRepoOption body: Transfer Options (required)
+        :return: Repository
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method repo_transfer" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `repo_transfer`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `repo_transfer`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `repo_transfer`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/transfer', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='Repository',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -8245,6 +9983,8 @@ class RepositoryApi(object):
 
         :param async_req bool
         :param str q: keywords to search (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[TopicResponse]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8266,12 +10006,14 @@ class RepositoryApi(object):
 
         :param async_req bool
         :param str q: keywords to search (required)
+        :param int page: page number of results to return (1-based)
+        :param int limit: page size of results, maximum page size is 50
         :return: list[TopicResponse]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['q']  # noqa: E501
+        all_params = ['q', 'page', 'limit']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8298,6 +10040,10 @@ class RepositoryApi(object):
         query_params = []
         if 'q' in params:
             query_params.append(('q', params['q']))  # noqa: E501
+        if 'page' in params:
+            query_params.append(('page', params['page']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
 
         header_params = {}
 
@@ -8640,6 +10386,119 @@ class RepositoryApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='WatchInfo',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def user_tracked_times(self, owner, repo, user, **kwargs):  # noqa: E501
+        """List a user's tracked times in a repo  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.user_tracked_times(owner, repo, user, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str user: username of user (required)
+        :return: list[TrackedTime]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.user_tracked_times_with_http_info(owner, repo, user, **kwargs)  # noqa: E501
+        else:
+            (data) = self.user_tracked_times_with_http_info(owner, repo, user, **kwargs)  # noqa: E501
+            return data
+
+    def user_tracked_times_with_http_info(self, owner, repo, user, **kwargs):  # noqa: E501
+        """List a user's tracked times in a repo  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.user_tracked_times_with_http_info(owner, repo, user, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str owner: owner of the repo (required)
+        :param str repo: name of the repo (required)
+        :param str user: username of user (required)
+        :return: list[TrackedTime]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['owner', 'repo', 'user']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method user_tracked_times" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'owner' is set
+        if ('owner' not in params or
+                params['owner'] is None):
+            raise ValueError("Missing the required parameter `owner` when calling `user_tracked_times`")  # noqa: E501
+        # verify the required parameter 'repo' is set
+        if ('repo' not in params or
+                params['repo'] is None):
+            raise ValueError("Missing the required parameter `repo` when calling `user_tracked_times`")  # noqa: E501
+        # verify the required parameter 'user' is set
+        if ('user' not in params or
+                params['user'] is None):
+            raise ValueError("Missing the required parameter `user` when calling `user_tracked_times`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'owner' in params:
+            path_params['owner'] = params['owner']  # noqa: E501
+        if 'repo' in params:
+            path_params['repo'] = params['repo']  # noqa: E501
+        if 'user' in params:
+            path_params['user'] = params['user']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'text/plain'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['AccessToken', 'AuthorizationHeaderToken', 'BasicAuth', 'SudoHeader', 'SudoParam', 'Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/repos/{owner}/{repo}/times/{user}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[TrackedTime]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

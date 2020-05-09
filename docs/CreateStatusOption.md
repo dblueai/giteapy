@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**context** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**state** | [**StatusState**](StatusState.md) |  | [optional] 
-**target_url** | **str** |  | [optional] 
+**context** | **str** |  | [optional]
+**description** | **str** |  | [optional]
+**state** | [**StatusState**](StatusState.md) |  | [optional]
+**target_url** | **str** |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
