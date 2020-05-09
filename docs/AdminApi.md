@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**admin_create_org**](AdminApi.md#admin_create_org) | **POST** /admin/users/{username}/orgs | Create an organization
 [**admin_create_public_key**](AdminApi.md#admin_create_public_key) | **POST** /admin/users/{username}/keys | Add a public key on behalf of a user
-[**admin_create_repo**](AdminApi.md#admin_create_repo) | **POST** /admin/users/{username}/repos | Create a repository on behalf a user
+[**admin_create_repo**](AdminApi.md#admin_create_repo) | **POST** /admin/users/{username}/repos | Create a repository on behalf of a user
 [**admin_create_user**](AdminApi.md#admin_create_user) | **POST** /admin/users | Create a user
 [**admin_delete_user**](AdminApi.md#admin_delete_user) | **DELETE** /admin/users/{username} | Delete a user
 [**admin_delete_user_public_key**](AdminApi.md#admin_delete_user_public_key) | **DELETE** /admin/users/{username}/keys/{id} | Delete a user&#39;s public key
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 # **admin_create_repo**
 > Repository admin_create_repo(username, repository)
 
-Create a repository on behalf a user
+Create a repository on behalf of a user
 
 ### Example
 ```python
@@ -220,7 +220,7 @@ username = 'username_example' # str | username of the user. This user will own t
 repository = giteapy.CreateRepoOption() # CreateRepoOption |
 
 try:
-    # Create a repository on behalf a user
+    # Create a repository on behalf of a user
     api_response = api_instance.admin_create_repo(username, repository)
     pprint(api_response)
 except ApiException as e:
@@ -634,7 +634,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_get_all_users**
-> list[User] admin_get_all_users()
+> list[User] admin_get_all_users(page=page, limit=limit)
 
 List all users
 
@@ -678,17 +678,23 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List all users
-    api_response = api_instance.admin_get_all_users()
+    api_response = api_instance.admin_get_all_users(page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_get_all_users: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 

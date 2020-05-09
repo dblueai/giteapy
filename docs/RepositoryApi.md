@@ -13,32 +13,39 @@ Method | HTTP request | Description
 [**repo_add_collaborator**](RepositoryApi.md#repo_add_collaborator) | **PUT** /repos/{owner}/{repo}/collaborators/{collaborator} | Add a collaborator to a repository
 [**repo_add_topc**](RepositoryApi.md#repo_add_topc) | **PUT** /repos/{owner}/{repo}/topics/{topic} | Add a topic to a repository
 [**repo_check_collaborator**](RepositoryApi.md#repo_check_collaborator) | **GET** /repos/{owner}/{repo}/collaborators/{collaborator} | Check if a user is a collaborator of a repository
+[**repo_create_branch_protection**](RepositoryApi.md#repo_create_branch_protection) | **POST** /repos/{owner}/{repo}/branch_protections | Create a branch protections for a repository
 [**repo_create_file**](RepositoryApi.md#repo_create_file) | **POST** /repos/{owner}/{repo}/contents/{filepath} | Create a file in a repository
 [**repo_create_hook**](RepositoryApi.md#repo_create_hook) | **POST** /repos/{owner}/{repo}/hooks | Create a hook
 [**repo_create_key**](RepositoryApi.md#repo_create_key) | **POST** /repos/{owner}/{repo}/keys | Add a key to a repository
 [**repo_create_pull_request**](RepositoryApi.md#repo_create_pull_request) | **POST** /repos/{owner}/{repo}/pulls | Create a pull request
+[**repo_create_pull_review**](RepositoryApi.md#repo_create_pull_review) | **POST** /repos/{owner}/{repo}/pulls/{index}/reviews | Create a review to an pull request
 [**repo_create_release**](RepositoryApi.md#repo_create_release) | **POST** /repos/{owner}/{repo}/releases | Create a release
 [**repo_create_release_attachment**](RepositoryApi.md#repo_create_release_attachment) | **POST** /repos/{owner}/{repo}/releases/{id}/assets | Create a release attachment
 [**repo_create_status**](RepositoryApi.md#repo_create_status) | **POST** /repos/{owner}/{repo}/statuses/{sha} | Create a commit status
 [**repo_delete**](RepositoryApi.md#repo_delete) | **DELETE** /repos/{owner}/{repo} | Delete a repository
+[**repo_delete_branch**](RepositoryApi.md#repo_delete_branch) | **DELETE** /repos/{owner}/{repo}/branches/{branch} | Delete a specific branch from a repository
+[**repo_delete_branch_protection**](RepositoryApi.md#repo_delete_branch_protection) | **DELETE** /repos/{owner}/{repo}/branch_protections/{name} | Delete a specific branch protection for the repository
 [**repo_delete_collaborator**](RepositoryApi.md#repo_delete_collaborator) | **DELETE** /repos/{owner}/{repo}/collaborators/{collaborator} | Delete a collaborator from a repository
 [**repo_delete_file**](RepositoryApi.md#repo_delete_file) | **DELETE** /repos/{owner}/{repo}/contents/{filepath} | Delete a file in a repository
 [**repo_delete_git_hook**](RepositoryApi.md#repo_delete_git_hook) | **DELETE** /repos/{owner}/{repo}/hooks/git/{id} | Delete a Git hook in a repository
 [**repo_delete_hook**](RepositoryApi.md#repo_delete_hook) | **DELETE** /repos/{owner}/{repo}/hooks/{id} | Delete a hook in a repository
 [**repo_delete_key**](RepositoryApi.md#repo_delete_key) | **DELETE** /repos/{owner}/{repo}/keys/{id} | Delete a key from a repository
+[**repo_delete_pull_review**](RepositoryApi.md#repo_delete_pull_review) | **DELETE** /repos/{owner}/{repo}/pulls/{index}/reviews/{id} | Delete a specific review from a pull request
 [**repo_delete_release**](RepositoryApi.md#repo_delete_release) | **DELETE** /repos/{owner}/{repo}/releases/{id} | Delete a release
 [**repo_delete_release_attachment**](RepositoryApi.md#repo_delete_release_attachment) | **DELETE** /repos/{owner}/{repo}/releases/{id}/assets/{attachment_id} | Delete a release attachment
 [**repo_delete_topic**](RepositoryApi.md#repo_delete_topic) | **DELETE** /repos/{owner}/{repo}/topics/{topic} | Delete a topic from a repository
 [**repo_edit**](RepositoryApi.md#repo_edit) | **PATCH** /repos/{owner}/{repo} | Edit a repository&#39;s properties. Only fields that are set will be changed.
+[**repo_edit_branch_protection**](RepositoryApi.md#repo_edit_branch_protection) | **PATCH** /repos/{owner}/{repo}/branch_protections/{name} | Edit a branch protections for a repository. Only fields that are set will be changed
 [**repo_edit_git_hook**](RepositoryApi.md#repo_edit_git_hook) | **PATCH** /repos/{owner}/{repo}/hooks/git/{id} | Edit a Git hook in a repository
 [**repo_edit_hook**](RepositoryApi.md#repo_edit_hook) | **PATCH** /repos/{owner}/{repo}/hooks/{id} | Edit a hook in a repository
-[**repo_edit_pull_request**](RepositoryApi.md#repo_edit_pull_request) | **PATCH** /repos/{owner}/{repo}/pulls/{index} | Update a pull request
+[**repo_edit_pull_request**](RepositoryApi.md#repo_edit_pull_request) | **PATCH** /repos/{owner}/{repo}/pulls/{index} | Update a pull request. If using deadline only the date will be taken into account, and time of day ignored.
 [**repo_edit_release**](RepositoryApi.md#repo_edit_release) | **PATCH** /repos/{owner}/{repo}/releases/{id} | Update a release
 [**repo_edit_release_attachment**](RepositoryApi.md#repo_edit_release_attachment) | **PATCH** /repos/{owner}/{repo}/releases/{id}/assets/{attachment_id} | Edit a release attachment
 [**repo_get**](RepositoryApi.md#repo_get) | **GET** /repos/{owner}/{repo} | Get a repository
 [**repo_get_all_commits**](RepositoryApi.md#repo_get_all_commits) | **GET** /repos/{owner}/{repo}/commits | Get a list of all commits from a repository
 [**repo_get_archive**](RepositoryApi.md#repo_get_archive) | **GET** /repos/{owner}/{repo}/archive/{archive} | Get an archive of a repository
-[**repo_get_branch**](RepositoryApi.md#repo_get_branch) | **GET** /repos/{owner}/{repo}/branches/{branch} | Retrieve a specific branch from a repository
+[**repo_get_branch**](RepositoryApi.md#repo_get_branch) | **GET** /repos/{owner}/{repo}/branches/{branch} | Retrieve a specific branch from a repository, including its effective branch protection
+[**repo_get_branch_protection**](RepositoryApi.md#repo_get_branch_protection) | **GET** /repos/{owner}/{repo}/branch_protections/{name} | Get a specific branch protection for the repository
 [**repo_get_by_id**](RepositoryApi.md#repo_get_by_id) | **GET** /repositories/{id} | Get a repository by id
 [**repo_get_combined_status_by_ref**](RepositoryApi.md#repo_get_combined_status_by_ref) | **GET** /repos/{owner}/{repo}/commits/{ref}/statuses | Get a commit&#39;s combined status, by branch/tag/commit reference
 [**repo_get_contents**](RepositoryApi.md#repo_get_contents) | **GET** /repos/{owner}/{repo}/contents/{filepath} | Gets the metadata and contents (if a file) of an entry in a repository, or a list of entries if a dir
@@ -48,11 +55,15 @@ Method | HTTP request | Description
 [**repo_get_hook**](RepositoryApi.md#repo_get_hook) | **GET** /repos/{owner}/{repo}/hooks/{id} | Get a hook
 [**repo_get_key**](RepositoryApi.md#repo_get_key) | **GET** /repos/{owner}/{repo}/keys/{id} | Get a repository&#39;s key by id
 [**repo_get_pull_request**](RepositoryApi.md#repo_get_pull_request) | **GET** /repos/{owner}/{repo}/pulls/{index} | Get a pull request
+[**repo_get_pull_review**](RepositoryApi.md#repo_get_pull_review) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews/{id} | Get a specific review for a pull request
+[**repo_get_pull_review_comments**](RepositoryApi.md#repo_get_pull_review_comments) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews/{id}/comments | Get a specific review for a pull request
 [**repo_get_raw_file**](RepositoryApi.md#repo_get_raw_file) | **GET** /repos/{owner}/{repo}/raw/{filepath} | Get a file from a repository
 [**repo_get_release**](RepositoryApi.md#repo_get_release) | **GET** /repos/{owner}/{repo}/releases/{id} | Get a release
 [**repo_get_release_attachment**](RepositoryApi.md#repo_get_release_attachment) | **GET** /repos/{owner}/{repo}/releases/{id}/assets/{attachment_id} | Get a release attachment
-[**repo_get_single_commit**](RepositoryApi.md#repo_get_single_commit) | **GET** /repos/{owner}/{repo}/git/commits/{sha} | Get a single commit from a repository
+[**repo_get_single_commit_by_ref**](RepositoryApi.md#repo_get_single_commit_by_ref) | **GET** /repos/{owner}/{repo}/commits/{ref} | Get a single commit from a repository
+[**repo_get_single_commit_by_sha**](RepositoryApi.md#repo_get_single_commit_by_sha) | **GET** /repos/{owner}/{repo}/git/commits/{sha} | Get a single commit from a repository
 [**repo_list_all_git_refs**](RepositoryApi.md#repo_list_all_git_refs) | **GET** /repos/{owner}/{repo}/git/refs | Get specified ref or filtered repository&#39;s refs
+[**repo_list_branch_protection**](RepositoryApi.md#repo_list_branch_protection) | **GET** /repos/{owner}/{repo}/branch_protections | List branch protections for a repository
 [**repo_list_branches**](RepositoryApi.md#repo_list_branches) | **GET** /repos/{owner}/{repo}/branches | List a repository&#39;s branches
 [**repo_list_collaborators**](RepositoryApi.md#repo_list_collaborators) | **GET** /repos/{owner}/{repo}/collaborators | List a repository&#39;s collaborators
 [**repo_list_git_hooks**](RepositoryApi.md#repo_list_git_hooks) | **GET** /repos/{owner}/{repo}/hooks/git | List the Git hooks in a repository
@@ -60,6 +71,7 @@ Method | HTTP request | Description
 [**repo_list_hooks**](RepositoryApi.md#repo_list_hooks) | **GET** /repos/{owner}/{repo}/hooks | List the hooks in a repository
 [**repo_list_keys**](RepositoryApi.md#repo_list_keys) | **GET** /repos/{owner}/{repo}/keys | List a repository&#39;s keys
 [**repo_list_pull_requests**](RepositoryApi.md#repo_list_pull_requests) | **GET** /repos/{owner}/{repo}/pulls | List a repo&#39;s pull requests
+[**repo_list_pull_reviews**](RepositoryApi.md#repo_list_pull_reviews) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews | List all reviews for a pull request
 [**repo_list_release_attachments**](RepositoryApi.md#repo_list_release_attachments) | **GET** /repos/{owner}/{repo}/releases/{id}/assets | List release&#39;s attachments
 [**repo_list_releases**](RepositoryApi.md#repo_list_releases) | **GET** /repos/{owner}/{repo}/releases | List a repo&#39;s releases
 [**repo_list_stargazers**](RepositoryApi.md#repo_list_stargazers) | **GET** /repos/{owner}/{repo}/stargazers | List a repo&#39;s stargazers
@@ -73,14 +85,17 @@ Method | HTTP request | Description
 [**repo_pull_request_is_merged**](RepositoryApi.md#repo_pull_request_is_merged) | **GET** /repos/{owner}/{repo}/pulls/{index}/merge | Check if a pull request has been merged
 [**repo_search**](RepositoryApi.md#repo_search) | **GET** /repos/search | Search for repositories
 [**repo_signing_key**](RepositoryApi.md#repo_signing_key) | **GET** /repos/{owner}/{repo}/signing-key.gpg | Get signing-key.gpg for given repository
+[**repo_submit_pull_review**](RepositoryApi.md#repo_submit_pull_review) | **POST** /repos/{owner}/{repo}/pulls/{index}/reviews/{id} | Submit a pending review to an pull request
 [**repo_test_hook**](RepositoryApi.md#repo_test_hook) | **POST** /repos/{owner}/{repo}/hooks/{id}/tests | Test a push webhook
 [**repo_tracked_times**](RepositoryApi.md#repo_tracked_times) | **GET** /repos/{owner}/{repo}/times | List a repo&#39;s tracked times
+[**repo_transfer**](RepositoryApi.md#repo_transfer) | **POST** /repos/{owner}/{repo}/transfer | Transfer a repo ownership
 [**repo_update_file**](RepositoryApi.md#repo_update_file) | **PUT** /repos/{owner}/{repo}/contents/{filepath} | Update a file in a repository
 [**repo_update_topics**](RepositoryApi.md#repo_update_topics) | **PUT** /repos/{owner}/{repo}/topics | Replace list of topics for a repository
 [**topic_search**](RepositoryApi.md#topic_search) | **GET** /topics/search | search topics via keyword
 [**user_current_check_subscription**](RepositoryApi.md#user_current_check_subscription) | **GET** /repos/{owner}/{repo}/subscription | Check if the current user is watching a repo
 [**user_current_delete_subscription**](RepositoryApi.md#user_current_delete_subscription) | **DELETE** /repos/{owner}/{repo}/subscription | Unwatch a repo
 [**user_current_put_subscription**](RepositoryApi.md#user_current_put_subscription) | **PUT** /repos/{owner}/{repo}/subscription | Watch a repo
+[**user_tracked_times**](RepositoryApi.md#user_tracked_times) | **GET** /repos/{owner}/{repo}/times/{user} | List a user&#39;s tracked times in a repo
 
 
 # **create_current_user_repo**
@@ -486,7 +501,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_forks**
-> list[Repository] list_forks(owner, repo)
+> list[Repository] list_forks(owner, repo, page=page, limit=limit)
 
 List a repository's forks
 
@@ -532,10 +547,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repository's forks
-    api_response = api_instance.list_forks(owner, repo)
+    api_response = api_instance.list_forks(owner, repo, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->list_forks: %s\n" % e)
@@ -547,6 +564,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -798,6 +817,86 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_create_branch_protection**
+> BranchProtection repo_create_branch_protection(owner, repo, body=body)
+
+Create a branch protections for a repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+body = giteapy.CreateBranchProtectionOption() # CreateBranchProtectionOption |  (optional)
+
+try:
+    # Create a branch protections for a repository
+    api_response = api_instance.repo_create_branch_protection(owner, repo, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_create_branch_protection: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **body** | [**CreateBranchProtectionOption**](CreateBranchProtectionOption.md)|  | [optional]
+
+### Return type
+
+[**BranchProtection**](BranchProtection.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1124,6 +1223,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_create_pull_review**
+> PullReview repo_create_pull_review(owner, repo, index, body)
+
+Create a review to an pull request
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the pull request
+body = giteapy.CreatePullReviewOptions() # CreatePullReviewOptions |
+
+try:
+    # Create a review to an pull request
+    api_response = api_instance.repo_create_pull_review(owner, repo, index, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_create_pull_review: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request |
+ **body** | [**CreatePullReviewOptions**](CreatePullReviewOptions.md)|  |
+
+### Return type
+
+[**PullReview**](PullReview.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_create_release**
 > Release repo_create_release(owner, repo, body=body)
 
@@ -1289,7 +1470,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_create_status**
-> list[Status] repo_create_status(owner, repo, sha, body=body)
+> Status repo_create_status(owner, repo, sha, body=body)
 
 Create a commit status
 
@@ -1357,7 +1538,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Status]**](Status.md)
+[**Status**](Status.md)
 
 ### Authorization
 
@@ -1431,6 +1612,164 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo to delete |
  **repo** | **str**| name of the repo to delete |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_delete_branch**
+> repo_delete_branch(owner, repo, branch)
+
+Delete a specific branch from a repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+branch = 'branch_example' # str | branch to delete
+
+try:
+    # Delete a specific branch from a repository
+    api_instance.repo_delete_branch(owner, repo, branch)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_delete_branch: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **branch** | **str**| branch to delete |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_delete_branch_protection**
+> repo_delete_branch_protection(owner, repo, name)
+
+Delete a specific branch protection for the repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+name = 'name_example' # str | name of protected branch
+
+try:
+    # Delete a specific branch protection for the repository
+    api_instance.repo_delete_branch_protection(owner, repo, name)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_delete_branch_protection: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **name** | **str**| name of protected branch |
 
 ### Return type
 
@@ -1845,6 +2184,87 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_delete_pull_review**
+> repo_delete_pull_review(owner, repo, index, id)
+
+Delete a specific review from a pull request
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the pull request
+id = 789 # int | id of the review
+
+try:
+    # Delete a specific review from a pull request
+    api_instance.repo_delete_pull_review(owner, repo, index, id)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_delete_pull_review: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request |
+ **id** | **int**| id of the review |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_delete_release**
 > repo_delete_release(owner, repo, id)
 
@@ -2164,6 +2584,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_edit_branch_protection**
+> BranchProtection repo_edit_branch_protection(owner, repo, name, body=body)
+
+Edit a branch protections for a repository. Only fields that are set will be changed
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+name = 'name_example' # str | name of protected branch
+body = giteapy.EditBranchProtectionOption() # EditBranchProtectionOption |  (optional)
+
+try:
+    # Edit a branch protections for a repository. Only fields that are set will be changed
+    api_response = api_instance.repo_edit_branch_protection(owner, repo, name, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_edit_branch_protection: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **name** | **str**| name of protected branch |
+ **body** | [**EditBranchProtectionOption**](EditBranchProtectionOption.md)|  | [optional]
+
+### Return type
+
+[**BranchProtection**](BranchProtection.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_edit_git_hook**
 > GitHook repo_edit_git_hook(owner, repo, id, body=body)
 
@@ -2331,7 +2833,7 @@ Name | Type | Description  | Notes
 # **repo_edit_pull_request**
 > PullRequest repo_edit_pull_request(owner, repo, index, body=body)
 
-Update a pull request
+Update a pull request. If using deadline only the date will be taken into account, and time of day ignored.
 
 ### Example
 ```python
@@ -2379,7 +2881,7 @@ index = 789 # int | index of the pull request to edit
 body = giteapy.EditPullRequestOption() # EditPullRequestOption |  (optional)
 
 try:
-    # Update a pull request
+    # Update a pull request. If using deadline only the date will be taken into account, and time of day ignored.
     api_response = api_instance.repo_edit_pull_request(owner, repo, index, body=body)
     pprint(api_response)
 except ApiException as e:
@@ -2655,7 +3157,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_get_all_commits**
-> list[Commit] repo_get_all_commits(owner, repo, sha=sha, page=page)
+> list[Commit] repo_get_all_commits(owner, repo, sha=sha, page=page, limit=limit)
 
 Get a list of all commits from a repository
 
@@ -2702,11 +3204,12 @@ api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
 sha = 'sha_example' # str | SHA or branch to start listing commits from (usually 'master') (optional)
-page = 56 # int | page number of requested commits (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # Get a list of all commits from a repository
-    api_response = api_instance.repo_get_all_commits(owner, repo, sha=sha, page=page)
+    api_response = api_instance.repo_get_all_commits(owner, repo, sha=sha, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_get_all_commits: %s\n" % e)
@@ -2719,7 +3222,8 @@ Name | Type | Description  | Notes
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
  **sha** | **str**| SHA or branch to start listing commits from (usually &#39;master&#39;) | [optional]
- **page** | **int**| page number of requested commits | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -2818,7 +3322,7 @@ void (empty response body)
 # **repo_get_branch**
 > Branch repo_get_branch(owner, repo, branch)
 
-Retrieve a specific branch from a repository
+Retrieve a specific branch from a repository, including its effective branch protection
 
 ### Example
 ```python
@@ -2865,7 +3369,7 @@ repo = 'repo_example' # str | name of the repo
 branch = 'branch_example' # str | branch to get
 
 try:
-    # Retrieve a specific branch from a repository
+    # Retrieve a specific branch from a repository, including its effective branch protection
     api_response = api_instance.repo_get_branch(owner, repo, branch)
     pprint(api_response)
 except ApiException as e:
@@ -2883,6 +3387,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Branch**](Branch.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_get_branch_protection**
+> BranchProtection repo_get_branch_protection(owner, repo, name)
+
+Get a specific branch protection for the repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+name = 'name_example' # str | name of protected branch
+
+try:
+    # Get a specific branch protection for the repository
+    api_response = api_instance.repo_get_branch_protection(owner, repo, name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_get_branch_protection: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **name** | **str**| name of protected branch |
+
+### Return type
+
+[**BranchProtection**](BranchProtection.md)
 
 ### Authorization
 
@@ -3614,6 +4198,170 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_get_pull_review**
+> PullReview repo_get_pull_review(owner, repo, index, id)
+
+Get a specific review for a pull request
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the pull request
+id = 789 # int | id of the review
+
+try:
+    # Get a specific review for a pull request
+    api_response = api_instance.repo_get_pull_review(owner, repo, index, id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_get_pull_review: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request |
+ **id** | **int**| id of the review |
+
+### Return type
+
+[**PullReview**](PullReview.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_get_pull_review_comments**
+> list[PullReviewComment] repo_get_pull_review_comments(owner, repo, index, id)
+
+Get a specific review for a pull request
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the pull request
+id = 789 # int | id of the review
+
+try:
+    # Get a specific review for a pull request
+    api_response = api_instance.repo_get_pull_review_comments(owner, repo, index, id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_get_pull_review_comments: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request |
+ **id** | **int**| id of the review |
+
+### Return type
+
+[**list[PullReviewComment]**](PullReviewComment.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_get_raw_file**
 > repo_get_raw_file(owner, repo, filepath)
 
@@ -3855,8 +4603,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **repo_get_single_commit**
-> Commit repo_get_single_commit(owner, repo, sha)
+# **repo_get_single_commit_by_ref**
+> Commit repo_get_single_commit_by_ref(owner, repo, ref)
+
+Get a single commit from a repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+ref = 'ref_example' # str | a git ref
+
+try:
+    # Get a single commit from a repository
+    api_response = api_instance.repo_get_single_commit_by_ref(owner, repo, ref)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_get_single_commit_by_ref: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **ref** | **str**| a git ref |
+
+### Return type
+
+[**Commit**](Commit.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_get_single_commit_by_sha**
+> Commit repo_get_single_commit_by_sha(owner, repo, sha)
 
 Get a single commit from a repository
 
@@ -3906,10 +4734,10 @@ sha = 'sha_example' # str | the commit hash
 
 try:
     # Get a single commit from a repository
-    api_response = api_instance.repo_get_single_commit(owner, repo, sha)
+    api_response = api_instance.repo_get_single_commit_by_sha(owner, repo, sha)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling RepositoryApi->repo_get_single_commit: %s\n" % e)
+    print("Exception when calling RepositoryApi->repo_get_single_commit_by_sha: %s\n" % e)
 ```
 
 ### Parameters
@@ -4013,6 +4841,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_list_branch_protection**
+> list[BranchProtection] repo_list_branch_protection(owner, repo)
+
+List branch protections for a repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+
+try:
+    # List branch protections for a repository
+    api_response = api_instance.repo_list_branch_protection(owner, repo)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_list_branch_protection: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+
+### Return type
+
+[**list[BranchProtection]**](BranchProtection.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_list_branches**
 > list[Branch] repo_list_branches(owner, repo)
 
@@ -4092,7 +4998,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_collaborators**
-> list[User] repo_list_collaborators(owner, repo)
+> list[User] repo_list_collaborators(owner, repo, page=page, limit=limit)
 
 List a repository's collaborators
 
@@ -4138,10 +5044,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repository's collaborators
-    api_response = api_instance.repo_list_collaborators(owner, repo)
+    api_response = api_instance.repo_list_collaborators(owner, repo, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_collaborators: %s\n" % e)
@@ -4153,6 +5061,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -4328,7 +5238,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_hooks**
-> list[Hook] repo_list_hooks(owner, repo)
+> list[Hook] repo_list_hooks(owner, repo, page=page, limit=limit)
 
 List the hooks in a repository
 
@@ -4374,10 +5284,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List the hooks in a repository
-    api_response = api_instance.repo_list_hooks(owner, repo)
+    api_response = api_instance.repo_list_hooks(owner, repo, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_hooks: %s\n" % e)
@@ -4389,6 +5301,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -4406,7 +5320,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_keys**
-> list[DeployKey] repo_list_keys(owner, repo, key_id=key_id, fingerprint=fingerprint)
+> list[DeployKey] repo_list_keys(owner, repo, key_id=key_id, fingerprint=fingerprint, page=page, limit=limit)
 
 List a repository's keys
 
@@ -4454,10 +5368,12 @@ owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
 key_id = 56 # int | the key_id to search for (optional)
 fingerprint = 'fingerprint_example' # str | fingerprint of the key (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repository's keys
-    api_response = api_instance.repo_list_keys(owner, repo, key_id=key_id, fingerprint=fingerprint)
+    api_response = api_instance.repo_list_keys(owner, repo, key_id=key_id, fingerprint=fingerprint, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_keys: %s\n" % e)
@@ -4471,6 +5387,8 @@ Name | Type | Description  | Notes
  **repo** | **str**| name of the repo |
  **key_id** | **int**| the key_id to search for | [optional]
  **fingerprint** | **str**| fingerprint of the key | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -4488,7 +5406,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_pull_requests**
-> list[PullRequest] repo_list_pull_requests(owner, repo, page=page, state=state, sort=sort, milestone=milestone, labels=labels)
+> list[PullRequest] repo_list_pull_requests(owner, repo, state=state, sort=sort, milestone=milestone, labels=labels, page=page, limit=limit)
 
 List a repo's pull requests
 
@@ -4534,15 +5452,16 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
-page = 56 # int | Page number (optional)
 state = 'state_example' # str | State of pull request: open or closed (optional) (optional)
 sort = 'sort_example' # str | Type of sort (optional)
 milestone = 789 # int | ID of the milestone (optional)
 labels = [56] # list[int] | Label IDs (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repo's pull requests
-    api_response = api_instance.repo_list_pull_requests(owner, repo, page=page, state=state, sort=sort, milestone=milestone, labels=labels)
+    api_response = api_instance.repo_list_pull_requests(owner, repo, state=state, sort=sort, milestone=milestone, labels=labels, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_pull_requests: %s\n" % e)
@@ -4554,15 +5473,100 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
- **page** | **int**| Page number | [optional]
  **state** | **str**| State of pull request: open or closed (optional) | [optional]
  **sort** | **str**| Type of sort | [optional]
  **milestone** | **int**| ID of the milestone | [optional]
  **labels** | [**list[int]**](int.md)| Label IDs | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
 [**list[PullRequest]**](PullRequest.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_list_pull_reviews**
+> list[PullReview] repo_list_pull_reviews(owner, repo, index, page=page, limit=limit)
+
+List all reviews for a pull request
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the pull request
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
+
+try:
+    # List all reviews for a pull request
+    api_response = api_instance.repo_list_pull_reviews(owner, repo, index, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_list_pull_reviews: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
+
+### Return type
+
+[**list[PullReview]**](PullReview.md)
 
 ### Authorization
 
@@ -4656,7 +5660,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_releases**
-> list[Release] repo_list_releases(owner, repo, page=page, per_page=per_page)
+> list[Release] repo_list_releases(owner, repo, per_page=per_page, page=page, limit=limit)
 
 List a repo's releases
 
@@ -4702,12 +5706,13 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
-page = 56 # int | page wants to load (optional)
 per_page = 56 # int | items count every page wants to load (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repo's releases
-    api_response = api_instance.repo_list_releases(owner, repo, page=page, per_page=per_page)
+    api_response = api_instance.repo_list_releases(owner, repo, per_page=per_page, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_releases: %s\n" % e)
@@ -4719,8 +5724,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
- **page** | **int**| page wants to load | [optional]
  **per_page** | **int**| items count every page wants to load | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -4738,7 +5744,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_stargazers**
-> list[User] repo_list_stargazers(owner, repo)
+> list[User] repo_list_stargazers(owner, repo, page=page, limit=limit)
 
 List a repo's stargazers
 
@@ -4784,10 +5790,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repo's stargazers
-    api_response = api_instance.repo_list_stargazers(owner, repo)
+    api_response = api_instance.repo_list_stargazers(owner, repo, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_stargazers: %s\n" % e)
@@ -4799,6 +5807,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -4816,7 +5826,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_statuses**
-> list[Status] repo_list_statuses(owner, repo, sha, page=page, sort=sort, state=state)
+> list[Status] repo_list_statuses(owner, repo, sha, sort=sort, state=state, page=page, limit=limit)
 
 Get a commit's statuses
 
@@ -4863,13 +5873,14 @@ api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
 sha = 'sha_example' # str | sha of the commit
-page = 56 # int | page number of results (optional)
 sort = 'sort_example' # str | type of sort (optional)
 state = 'state_example' # str | type of state (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # Get a commit's statuses
-    api_response = api_instance.repo_list_statuses(owner, repo, sha, page=page, sort=sort, state=state)
+    api_response = api_instance.repo_list_statuses(owner, repo, sha, sort=sort, state=state, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_statuses: %s\n" % e)
@@ -4882,9 +5893,10 @@ Name | Type | Description  | Notes
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
  **sha** | **str**| sha of the commit |
- **page** | **int**| page number of results | [optional]
  **sort** | **str**| type of sort | [optional]
  **state** | **str**| type of state | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -4902,7 +5914,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_subscribers**
-> list[User] repo_list_subscribers(owner, repo)
+> list[User] repo_list_subscribers(owner, repo, page=page, limit=limit)
 
 List a repo's watchers
 
@@ -4948,10 +5960,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repo's watchers
-    api_response = api_instance.repo_list_subscribers(owner, repo)
+    api_response = api_instance.repo_list_subscribers(owner, repo, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_subscribers: %s\n" % e)
@@ -4963,6 +5977,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -4980,7 +5996,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_tags**
-> list[Tag] repo_list_tags(owner, repo)
+> list[Tag] repo_list_tags(owner, repo, page=page, limit=limit)
 
 List a repository's tags
 
@@ -5026,10 +6042,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, default maximum page size is 50 (optional)
 
 try:
     # List a repository's tags
-    api_response = api_instance.repo_list_tags(owner, repo)
+    api_response = api_instance.repo_list_tags(owner, repo, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_tags: %s\n" % e)
@@ -5041,6 +6059,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, default maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -5058,7 +6078,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_list_topics**
-> TopicName repo_list_topics(owner, repo)
+> TopicName repo_list_topics(owner, repo, page=page, limit=limit)
 
 Get list of topics that a repository has
 
@@ -5104,10 +6124,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # Get list of topics that a repository has
-    api_response = api_instance.repo_list_topics(owner, repo)
+    api_response = api_instance.repo_list_topics(owner, repo, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_list_topics: %s\n" % e)
@@ -5119,6 +6141,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -5449,7 +6473,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_search**
-> SearchResults repo_search(q=q, topic=topic, include_desc=include_desc, uid=uid, starred_by=starred_by, private=private, page=page, limit=limit, mode=mode, exclusive=exclusive, sort=sort, order=order)
+> SearchResults repo_search(q=q, topic=topic, include_desc=include_desc, uid=uid, priority_owner_id=priority_owner_id, starred_by=starred_by, private=private, template=template, mode=mode, exclusive=exclusive, sort=sort, order=order, page=page, limit=limit)
 
 Search for repositories
 
@@ -5497,18 +6521,20 @@ q = 'q_example' # str | keyword (optional)
 topic = true # bool | Limit search to repositories with keyword as topic (optional)
 include_desc = true # bool | include search of keyword within repository description (optional)
 uid = 789 # int | search only for repos that the user with the given id owns or contributes to (optional)
+priority_owner_id = 789 # int | repo owner to prioritize in the results (optional)
 starred_by = 789 # int | search only for repos that the user with the given id has starred (optional)
 private = true # bool | include private repositories this user has access to (defaults to true) (optional)
-page = 56 # int | page number of results to return (1-based) (optional)
-limit = 56 # int | page size of results, maximum page size is 50 (optional)
+template = true # bool | include template repositories this user has access to (defaults to true) (optional)
 mode = 'mode_example' # str | type of repository to search for. Supported values are \"fork\", \"source\", \"mirror\" and \"collaborative\" (optional)
 exclusive = true # bool | if `uid` is given, search only for repos that the user owns (optional)
 sort = 'sort_example' # str | sort repos by attribute. Supported values are \"alpha\", \"created\", \"updated\", \"size\", and \"id\". Default is \"alpha\" (optional)
 order = 'order_example' # str | sort order, either \"asc\" (ascending) or \"desc\" (descending). Default is \"asc\", ignored if \"sort\" is not specified. (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # Search for repositories
-    api_response = api_instance.repo_search(q=q, topic=topic, include_desc=include_desc, uid=uid, starred_by=starred_by, private=private, page=page, limit=limit, mode=mode, exclusive=exclusive, sort=sort, order=order)
+    api_response = api_instance.repo_search(q=q, topic=topic, include_desc=include_desc, uid=uid, priority_owner_id=priority_owner_id, starred_by=starred_by, private=private, template=template, mode=mode, exclusive=exclusive, sort=sort, order=order, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_search: %s\n" % e)
@@ -5522,14 +6548,16 @@ Name | Type | Description  | Notes
  **topic** | **bool**| Limit search to repositories with keyword as topic | [optional]
  **include_desc** | **bool**| include search of keyword within repository description | [optional]
  **uid** | **int**| search only for repos that the user with the given id owns or contributes to | [optional]
+ **priority_owner_id** | **int**| repo owner to prioritize in the results | [optional]
  **starred_by** | **int**| search only for repos that the user with the given id has starred | [optional]
  **private** | **bool**| include private repositories this user has access to (defaults to true) | [optional]
- **page** | **int**| page number of results to return (1-based) | [optional]
- **limit** | **int**| page size of results, maximum page size is 50 | [optional]
+ **template** | **bool**| include template repositories this user has access to (defaults to true) | [optional]
  **mode** | **str**| type of repository to search for. Supported values are \&quot;fork\&quot;, \&quot;source\&quot;, \&quot;mirror\&quot; and \&quot;collaborative\&quot; | [optional]
  **exclusive** | **bool**| if &#x60;uid&#x60; is given, search only for repos that the user owns | [optional]
  **sort** | **str**| sort repos by attribute. Supported values are \&quot;alpha\&quot;, \&quot;created\&quot;, \&quot;updated\&quot;, \&quot;size\&quot;, and \&quot;id\&quot;. Default is \&quot;alpha\&quot; | [optional]
  **order** | **str**| sort order, either \&quot;asc\&quot; (ascending) or \&quot;desc\&quot; (descending). Default is \&quot;asc\&quot;, ignored if \&quot;sort\&quot; is not specified. | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -5624,6 +6652,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_submit_pull_review**
+> PullReview repo_submit_pull_review(owner, repo, index, id, body)
+
+Submit a pending review to an pull request
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the pull request
+id = 789 # int | id of the review
+body = giteapy.SubmitPullReviewOptions() # SubmitPullReviewOptions |
+
+try:
+    # Submit a pending review to an pull request
+    api_response = api_instance.repo_submit_pull_review(owner, repo, index, id, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_submit_pull_review: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **index** | **int**| index of the pull request |
+ **id** | **int**| id of the review |
+ **body** | [**SubmitPullReviewOptions**](SubmitPullReviewOptions.md)|  |
+
+### Return type
+
+[**PullReview**](PullReview.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_test_hook**
 > repo_test_hook(owner, repo, id)
 
@@ -5704,7 +6816,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_tracked_times**
-> list[TrackedTime] repo_tracked_times(owner, repo)
+> list[TrackedTime] repo_tracked_times(owner, repo, user=user, since=since, before=before, page=page, limit=limit)
 
 List a repo's tracked times
 
@@ -5750,10 +6862,15 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
+user = 'user_example' # str | optional filter by user (optional)
+since = '2013-10-20T19:20:30+01:00' # datetime | Only show times updated after the given time. This is a timestamp in RFC 3339 format (optional)
+before = '2013-10-20T19:20:30+01:00' # datetime | Only show times updated before the given time. This is a timestamp in RFC 3339 format (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # List a repo's tracked times
-    api_response = api_instance.repo_tracked_times(owner, repo)
+    api_response = api_instance.repo_tracked_times(owner, repo, user=user, since=since, before=before, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_tracked_times: %s\n" % e)
@@ -5765,10 +6882,95 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **owner** | **str**| owner of the repo |
  **repo** | **str**| name of the repo |
+ **user** | **str**| optional filter by user | [optional]
+ **since** | **datetime**| Only show times updated after the given time. This is a timestamp in RFC 3339 format | [optional]
+ **before** | **datetime**| Only show times updated before the given time. This is a timestamp in RFC 3339 format | [optional]
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
 [**list[TrackedTime]**](TrackedTime.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_transfer**
+> Repository repo_transfer(owner, repo, body)
+
+Transfer a repo ownership
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo to transfer
+repo = 'repo_example' # str | name of the repo to transfer
+body = giteapy.TransferRepoOption() # TransferRepoOption | Transfer Options
+
+try:
+    # Transfer a repo ownership
+    api_response = api_instance.repo_transfer(owner, repo, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_transfer: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo to transfer |
+ **repo** | **str**| name of the repo to transfer |
+ **body** | [**TransferRepoOption**](TransferRepoOption.md)| Transfer Options |
+
+### Return type
+
+[**Repository**](Repository.md)
 
 ### Authorization
 
@@ -5943,7 +7145,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **topic_search**
-> list[TopicResponse] topic_search(q)
+> list[TopicResponse] topic_search(q, page=page, limit=limit)
 
 search topics via keyword
 
@@ -5988,10 +7190,12 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
 q = 'q_example' # str | keywords to search
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results, maximum page size is 50 (optional)
 
 try:
     # search topics via keyword
-    api_response = api_instance.topic_search(q)
+    api_response = api_instance.topic_search(q, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->topic_search: %s\n" % e)
@@ -6002,6 +7206,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **str**| keywords to search |
+ **page** | **int**| page number of results to return (1-based) | [optional]
+ **limit** | **int**| page size of results, maximum page size is 50 | [optional]
 
 ### Return type
 
@@ -6248,6 +7454,86 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/plain
  - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_tracked_times**
+> list[TrackedTime] user_tracked_times(owner, repo, user)
+
+List a user's tracked times in a repo
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+user = 'user_example' # str | username of user
+
+try:
+    # List a user's tracked times in a repo
+    api_response = api_instance.user_tracked_times(owner, repo, user)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->user_tracked_times: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo |
+ **repo** | **str**| name of the repo |
+ **user** | **str**| username of user |
+
+### Return type
+
+[**list[TrackedTime]**](TrackedTime.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

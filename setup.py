@@ -18,7 +18,7 @@ def read_readme():
         return f.read()
 
 NAME = "giteapy"
-VERSION = "1.0.8"
+VERSION = "1.12.0"
 
 # To install the library, run the following
 #
@@ -33,6 +33,7 @@ REQUIRES = [
     "six>=1.10",
     "urllib3>=1.23"
 ]
+
 
 setup(
     name=NAME,
