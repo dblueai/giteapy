@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **head** | [**PRBranchInfo**](PRBranchInfo.md) |  | [optional] 
 **html_url** | **str** |  | [optional] 
 **id** | **int** |  | [optional] 
+**is_locked** | **bool** |  | [optional] 
 **labels** | [**list[Label]**](Label.md) |  | [optional] 
 **merge_base** | **str** |  | [optional] 
 **merge_commit_sha** | **str** |  | [optional] 

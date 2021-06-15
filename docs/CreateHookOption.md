@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active** | **bool** |  | [optional] [default to False]
 **branch_filter** | **str** |  | [optional] 
-**config** | **dict(str, str)** |  | 
+**config** | [**CreateHookOptionConfig**](CreateHookOptionConfig.md) |  | 
 **events** | **list[str]** |  | [optional] 
 **type** | **str** |  | 
 

@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 **author** | [**User**](User.md) |  | [optional] 
 **commit** | [**RepoCommit**](RepoCommit.md) |  | [optional] 
 **committer** | [**User**](User.md) |  | [optional] 
+**created** | **datetime** |  | [optional] 
+**files** | [**list[CommitAffectedFiles]**](CommitAffectedFiles.md) |  | [optional] 
 **html_url** | **str** |  | [optional] 
 **parents** | [**list[CommitMeta]**](CommitMeta.md) |  | [optional] 
 **sha** | **str** |  | [optional] 

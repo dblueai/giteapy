@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **author** | [**CommitUser**](CommitUser.md) |  | [optional] 
 **committer** | [**CommitUser**](CommitUser.md) |  | [optional] 
+**created** | **datetime** |  | [optional] 
 **html_url** | **str** |  | [optional] 
 **message** | **str** |  | [optional] 
 **parents** | [**list[CommitMeta]**](CommitMeta.md) |  | [optional] 
