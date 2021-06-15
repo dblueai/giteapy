@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **body** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **draft** | **bool** |  | [optional] 
+**html_url** | **str** |  | [optional] 
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **prerelease** | **bool** |  | [optional] 

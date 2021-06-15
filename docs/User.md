@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **language** | **str** | User locale | [optional] 
 **last_login** | **datetime** |  | [optional] 
 **login** | **str** | the user&#39;s username | [optional] 
+**restricted** | **bool** | Is user restricted | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

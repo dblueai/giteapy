@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **auth_password** | **str** |  | [optional] 
+**auth_token** | **str** |  | [optional] 
 **auth_username** | **str** |  | [optional] 
 **clone_addr** | **str** |  | 
 **description** | **str** |  | [optional] 
@@ -11,10 +12,12 @@ Name | Type | Description | Notes
 **labels** | **bool** |  | [optional] 
 **milestones** | **bool** |  | [optional] 
 **mirror** | **bool** |  | [optional] 
+**mirror_interval** | **str** |  | [optional] 
 **private** | **bool** |  | [optional] 
 **pull_requests** | **bool** |  | [optional] 
 **releases** | **bool** |  | [optional] 
 **repo_name** | **str** |  | 
+**service** | [**GitServiceType**](GitServiceType.md) |  | [optional] 
 **uid** | **int** |  | 
 **wiki** | **bool** |  | [optional] 
 
