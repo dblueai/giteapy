@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **commit** | [**CommitMeta**](CommitMeta.md) |  | [optional] 
 **id** | **str** |  | [optional] 
+**message** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **tarball_url** | **str** |  | [optional] 
 **zipball_url** | **str** |  | [optional] 

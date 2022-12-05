@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**allow_maintainer_edit** | **bool** |  | [optional] 
 **assignee** | [**User**](User.md) |  | [optional] 
 **assignees** | [**list[User]**](User.md) |  | [optional] 
 **base** | [**PRBranchInfo**](PRBranchInfo.md) |  | [optional] 
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **head** | [**PRBranchInfo**](PRBranchInfo.md) |  | [optional] 
 **html_url** | **str** |  | [optional] 
 **id** | **int** |  | [optional] 
+**is_locked** | **bool** |  | [optional] 
 **labels** | [**list[Label]**](Label.md) |  | [optional] 
 **merge_base** | **str** |  | [optional] 
 **merge_commit_sha** | **str** |  | [optional] 
