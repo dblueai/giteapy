@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_id** | **str** |  | [optional] 
 **client_secret** | **str** |  | [optional] 
+**confidential_client** | **bool** |  | [optional] 
 **created** | **datetime** |  | [optional] 
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 

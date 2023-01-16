@@ -4,9 +4,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **about** | **str** |  | [optional] 
+**body** | [**list[IssueFormField]**](IssueFormField.md) |  | [optional] 
 **content** | **str** |  | [optional] 
 **file_name** | **str** |  | [optional] 
-**labels** | **list[str]** |  | [optional] 
+**labels** | [**IssueTemplateLabels**](IssueTemplateLabels.md) |  | [optional] 
 **name** | **str** |  | [optional] 
 **ref** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 

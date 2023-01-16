@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**list_forks**](RepositoryApi.md#list_forks) | **GET** /repos/{owner}/{repo}/forks | List a repository&#39;s forks
 [**reject_repo_transfer**](RepositoryApi.md#reject_repo_transfer) | **POST** /repos/{owner}/{repo}/transfer/reject | Reject a repo transfer
 [**repo_add_collaborator**](RepositoryApi.md#repo_add_collaborator) | **PUT** /repos/{owner}/{repo}/collaborators/{collaborator} | Add a collaborator to a repository
+[**repo_add_push_mirror**](RepositoryApi.md#repo_add_push_mirror) | **POST** /repos/{owner}/{repo}/push_mirrors | add a push mirror to the repository
 [**repo_add_team**](RepositoryApi.md#repo_add_team) | **PUT** /repos/{owner}/{repo}/teams/{team} | Add a team to a repository
 [**repo_add_topic**](RepositoryApi.md#repo_add_topic) | **PUT** /repos/{owner}/{repo}/topics/{topic} | Add a topic to a repository
 [**repo_apply_diff_patch**](RepositoryApi.md#repo_apply_diff_patch) | **POST** /repos/{owner}/{repo}/diffpatch | Apply diff patch to repository
@@ -43,6 +44,7 @@ Method | HTTP request | Description
 [**repo_delete_key**](RepositoryApi.md#repo_delete_key) | **DELETE** /repos/{owner}/{repo}/keys/{id} | Delete a key from a repository
 [**repo_delete_pull_review**](RepositoryApi.md#repo_delete_pull_review) | **DELETE** /repos/{owner}/{repo}/pulls/{index}/reviews/{id} | Delete a specific review from a pull request
 [**repo_delete_pull_review_requests**](RepositoryApi.md#repo_delete_pull_review_requests) | **DELETE** /repos/{owner}/{repo}/pulls/{index}/requested_reviewers | cancel review requests for a pull request
+[**repo_delete_push_mirror**](RepositoryApi.md#repo_delete_push_mirror) | **DELETE** /repos/{owner}/{repo}/push_mirrors/{name} | deletes a push mirror from a repository by remoteName
 [**repo_delete_release**](RepositoryApi.md#repo_delete_release) | **DELETE** /repos/{owner}/{repo}/releases/{id} | Delete a release
 [**repo_delete_release_attachment**](RepositoryApi.md#repo_delete_release_attachment) | **DELETE** /repos/{owner}/{repo}/releases/{id}/assets/{attachment_id} | Delete a release attachment
 [**repo_delete_release_by_tag**](RepositoryApi.md#repo_delete_release_by_tag) | **DELETE** /repos/{owner}/{repo}/releases/tags/{tag} | Delete a release by tag name
@@ -80,8 +82,10 @@ Method | HTTP request | Description
 [**repo_get_note**](RepositoryApi.md#repo_get_note) | **GET** /repos/{owner}/{repo}/git/notes/{sha} | Get a note corresponding to a single commit from a repository
 [**repo_get_pull_request**](RepositoryApi.md#repo_get_pull_request) | **GET** /repos/{owner}/{repo}/pulls/{index} | Get a pull request
 [**repo_get_pull_request_commits**](RepositoryApi.md#repo_get_pull_request_commits) | **GET** /repos/{owner}/{repo}/pulls/{index}/commits | Get commits for a pull request
+[**repo_get_pull_request_files**](RepositoryApi.md#repo_get_pull_request_files) | **GET** /repos/{owner}/{repo}/pulls/{index}/files | Get changed files for a pull request
 [**repo_get_pull_review**](RepositoryApi.md#repo_get_pull_review) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews/{id} | Get a specific review for a pull request
 [**repo_get_pull_review_comments**](RepositoryApi.md#repo_get_pull_review_comments) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews/{id}/comments | Get a specific review for a pull request
+[**repo_get_push_mirror_by_remote_name**](RepositoryApi.md#repo_get_push_mirror_by_remote_name) | **GET** /repos/{owner}/{repo}/push_mirrors/{name} | Get push mirror of the repository by remoteName
 [**repo_get_raw_file**](RepositoryApi.md#repo_get_raw_file) | **GET** /repos/{owner}/{repo}/raw/{filepath} | Get a file from a repository
 [**repo_get_raw_file_or_lfs**](RepositoryApi.md#repo_get_raw_file_or_lfs) | **GET** /repos/{owner}/{repo}/media/{filepath} | Get a file or it&#39;s LFS object from a repository
 [**repo_get_release**](RepositoryApi.md#repo_get_release) | **GET** /repos/{owner}/{repo}/releases/{id} | Get a release
@@ -104,6 +108,7 @@ Method | HTTP request | Description
 [**repo_list_keys**](RepositoryApi.md#repo_list_keys) | **GET** /repos/{owner}/{repo}/keys | List a repository&#39;s keys
 [**repo_list_pull_requests**](RepositoryApi.md#repo_list_pull_requests) | **GET** /repos/{owner}/{repo}/pulls | List a repo&#39;s pull requests
 [**repo_list_pull_reviews**](RepositoryApi.md#repo_list_pull_reviews) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews | List all reviews for a pull request
+[**repo_list_push_mirrors**](RepositoryApi.md#repo_list_push_mirrors) | **GET** /repos/{owner}/{repo}/push_mirrors | Get all push mirrors of the repository
 [**repo_list_release_attachments**](RepositoryApi.md#repo_list_release_attachments) | **GET** /repos/{owner}/{repo}/releases/{id}/assets | List release&#39;s attachments
 [**repo_list_releases**](RepositoryApi.md#repo_list_releases) | **GET** /repos/{owner}/{repo}/releases | List a repo&#39;s releases
 [**repo_list_stargazers**](RepositoryApi.md#repo_list_stargazers) | **GET** /repos/{owner}/{repo}/stargazers | List a repo&#39;s stargazers
@@ -117,6 +122,7 @@ Method | HTTP request | Description
 [**repo_migrate**](RepositoryApi.md#repo_migrate) | **POST** /repos/migrate | Migrate a remote git repository
 [**repo_mirror_sync**](RepositoryApi.md#repo_mirror_sync) | **POST** /repos/{owner}/{repo}/mirror-sync | Sync a mirrored repository
 [**repo_pull_request_is_merged**](RepositoryApi.md#repo_pull_request_is_merged) | **GET** /repos/{owner}/{repo}/pulls/{index}/merge | Check if a pull request has been merged
+[**repo_push_mirror_sync**](RepositoryApi.md#repo_push_mirror_sync) | **POST** /repos/{owner}/{repo}/push_mirrors-sync | Sync all push mirrored repository
 [**repo_search**](RepositoryApi.md#repo_search) | **GET** /repos/search | Search for repositories
 [**repo_signing_key**](RepositoryApi.md#repo_signing_key) | **GET** /repos/{owner}/{repo}/signing-key.gpg | Get signing-key.gpg for given repository
 [**repo_submit_pull_review**](RepositoryApi.md#repo_submit_pull_review) | **POST** /repos/{owner}/{repo}/pulls/{index}/reviews/{id} | Submit a pending review to an pull request
@@ -981,6 +987,91 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_add_push_mirror**
+> PushMirror repo_add_push_mirror(owner, repo, body=body)
+
+add a push mirror to the repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+body = giteapy.CreatePushMirrorOption() # CreatePushMirrorOption |  (optional)
+
+try:
+    # add a push mirror to the repository
+    api_response = api_instance.repo_add_push_mirror(owner, repo, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_add_push_mirror: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **body** | [**CreatePushMirrorOption**](CreatePushMirrorOption.md)|  | [optional] 
+
+### Return type
+
+[**PushMirror**](PushMirror.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3453,6 +3544,90 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_delete_push_mirror**
+> repo_delete_push_mirror(owner, repo, name)
+
+deletes a push mirror from a repository by remoteName
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+name = 'name_example' # str | remote name of the pushMirror
+
+try:
+    # deletes a push mirror from a repository by remoteName
+    api_instance.repo_delete_push_mirror(owner, repo, name)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_delete_push_mirror: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **name** | **str**| remote name of the pushMirror | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_delete_release**
 > repo_delete_release(owner, repo, id)
 
@@ -5088,7 +5263,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **repo_get_all_commits**
-> list[Commit] repo_get_all_commits(owner, repo, sha=sha, path=path, page=page, limit=limit)
+> list[Commit] repo_get_all_commits(owner, repo, sha=sha, path=path, stat=stat, page=page, limit=limit)
 
 Get a list of all commits from a repository
 
@@ -5141,12 +5316,13 @@ owner = 'owner_example' # str | owner of the repo
 repo = 'repo_example' # str | name of the repo
 sha = 'sha_example' # str | SHA or branch to start listing commits from (usually 'master') (optional)
 path = 'path_example' # str | filepath of a file/dir (optional)
+stat = true # bool | include diff stats for every commit (disable for speedup, default 'true') (optional)
 page = 56 # int | page number of results to return (1-based) (optional)
 limit = 56 # int | page size of results (ignored if used with 'path') (optional)
 
 try:
     # Get a list of all commits from a repository
-    api_response = api_instance.repo_get_all_commits(owner, repo, sha=sha, path=path, page=page, limit=limit)
+    api_response = api_instance.repo_get_all_commits(owner, repo, sha=sha, path=path, stat=stat, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RepositoryApi->repo_get_all_commits: %s\n" % e)
@@ -5160,6 +5336,7 @@ Name | Type | Description  | Notes
  **repo** | **str**| name of the repo | 
  **sha** | **str**| SHA or branch to start listing commits from (usually &#39;master&#39;) | [optional] 
  **path** | **str**| filepath of a file/dir | [optional] 
+ **stat** | **bool**| include diff stats for every commit (disable for speedup, default &#39;true&#39;) | [optional] 
  **page** | **int**| page number of results to return (1-based) | [optional] 
  **limit** | **int**| page size of results (ignored if used with &#39;path&#39;) | [optional] 
 
@@ -6623,6 +6800,99 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_get_pull_request_files**
+> list[ChangedFile] repo_get_pull_request_files(owner, repo, index, skip_to=skip_to, whitespace=whitespace, page=page, limit=limit)
+
+Get changed files for a pull request
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of the pull request to get
+skip_to = 'skip_to_example' # str | skip to given file (optional)
+whitespace = 'whitespace_example' # str | whitespace behavior (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # Get changed files for a pull request
+    api_response = api_instance.repo_get_pull_request_files(owner, repo, index, skip_to=skip_to, whitespace=whitespace, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_get_pull_request_files: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **int**| index of the pull request to get | 
+ **skip_to** | **str**| skip to given file | [optional] 
+ **whitespace** | **str**| whitespace behavior | [optional] 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[ChangedFile]**](ChangedFile.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_get_pull_review**
 > PullReview repo_get_pull_review(owner, repo, index, id)
 
@@ -6785,6 +7055,91 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[PullReviewComment]**](PullReviewComment.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_get_push_mirror_by_remote_name**
+> PushMirror repo_get_push_mirror_by_remote_name(owner, repo, name)
+
+Get push mirror of the repository by remoteName
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+name = 'name_example' # str | remote name of push mirror
+
+try:
+    # Get push mirror of the repository by remoteName
+    api_response = api_instance.repo_get_push_mirror_by_remote_name(owner, repo, name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_get_push_mirror_by_remote_name: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **name** | **str**| remote name of push mirror | 
+
+### Return type
+
+[**PushMirror**](PushMirror.md)
 
 ### Authorization
 
@@ -8693,6 +9048,93 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **repo_list_push_mirrors**
+> list[PushMirror] repo_list_push_mirrors(owner, repo, page=page, limit=limit)
+
+Get all push mirrors of the repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # Get all push mirrors of the repository
+    api_response = api_instance.repo_list_push_mirrors(owner, repo, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_list_push_mirrors: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[PushMirror]**](PushMirror.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **repo_list_release_attachments**
 > list[Attachment] repo_list_release_attachments(owner, repo, id)
 
@@ -9805,6 +10247,88 @@ Name | Type | Description  | Notes
  **owner** | **str**| owner of the repo | 
  **repo** | **str**| name of the repo | 
  **index** | **int**| index of the pull request | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **repo_push_mirror_sync**
+> repo_push_mirror_sync(owner, repo)
+
+Sync all push mirrored repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.RepositoryApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo to sync
+repo = 'repo_example' # str | name of the repo to sync
+
+try:
+    # Sync all push mirrored repository
+    api_instance.repo_push_mirror_sync(owner, repo)
+except ApiException as e:
+    print("Exception when calling RepositoryApi->repo_push_mirror_sync: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo to sync | 
+ **repo** | **str**| name of the repo to sync | 
 
 ### Return type
 
