@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**created_at** | **datetime** | For explicitly setting the user creation timestamp. Useful when users are migrated from other systems. When omitted, the user&#39;s creation timestamp will be set to \&quot;now\&quot;. | [optional] 
 **email** | **str** |  | 
 **full_name** | **str** |  | [optional] 
 **login_name** | **str** |  | [optional] 

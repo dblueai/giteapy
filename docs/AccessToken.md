@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
+**scopes** | **list[str]** |  | [optional] 
 **sha1** | **str** |  | [optional] 
 **token_last_eight** | **str** |  | [optional] 
 

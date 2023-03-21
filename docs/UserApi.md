@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **user_create_token**
-> AccessToken user_create_token(username, user_create_token=user_create_token)
+> AccessToken user_create_token(username, body=body)
 
 Create an access token
 
@@ -667,11 +667,11 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = giteapy.UserApi(giteapy.ApiClient(configuration))
 username = 'username_example' # str | username of user
-user_create_token = giteapy.CreateAccessTokenOption() # CreateAccessTokenOption |  (optional)
+body = giteapy.CreateAccessTokenOption() # CreateAccessTokenOption |  (optional)
 
 try:
     # Create an access token
-    api_response = api_instance.user_create_token(username, user_create_token=user_create_token)
+    api_response = api_instance.user_create_token(username, body=body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UserApi->user_create_token: %s\n" % e)
@@ -682,7 +682,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **username** | **str**| username of user | 
- **user_create_token** | [**CreateAccessTokenOption**](CreateAccessTokenOption.md)|  | [optional] 
+ **body** | [**CreateAccessTokenOption**](CreateAccessTokenOption.md)|  | [optional] 
 
 ### Return type
 

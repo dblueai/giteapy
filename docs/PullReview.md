@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **state** | [**ReviewStateType**](ReviewStateType.md) |  | [optional] 
 **submitted_at** | **datetime** |  | [optional] 
 **team** | [**Team**](Team.md) |  | [optional] 
+**updated_at** | **datetime** |  | [optional] 
 **user** | [**User**](User.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

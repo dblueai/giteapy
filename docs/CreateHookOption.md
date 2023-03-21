@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active** | **bool** |  | [optional] [default to False]
+**authorization_header** | **str** |  | [optional] 
 **branch_filter** | **str** |  | [optional] 
 **config** | [**CreateHookOptionConfig**](CreateHookOptionConfig.md) |  | 
 **events** | **list[str]** |  | [optional] 

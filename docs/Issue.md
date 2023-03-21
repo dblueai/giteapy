@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**assets** | [**list[Attachment]**](Attachment.md) |  | [optional] 
 **assignee** | [**User**](User.md) |  | [optional] 
 **assignees** | [**list[User]**](User.md) |  | [optional] 
 **body** | **str** |  | [optional] 

@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active** | **bool** |  | [optional] 
+**authorization_header** | **str** |  | [optional] 
 **config** | **dict(str, str)** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **events** | **list[str]** |  | [optional] 

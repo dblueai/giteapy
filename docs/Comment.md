@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**assets** | [**list[Attachment]**](Attachment.md) |  | [optional] 
 **body** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **html_url** | **str** |  | [optional] 
