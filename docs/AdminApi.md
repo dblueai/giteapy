@@ -12,16 +12,19 @@ Method | HTTP request | Description
 [**admin_create_user**](AdminApi.md#admin_create_user) | **POST** /admin/users | Create a user
 [**admin_cron_list**](AdminApi.md#admin_cron_list) | **GET** /admin/cron | List cron tasks
 [**admin_cron_run**](AdminApi.md#admin_cron_run) | **POST** /admin/cron/{task} | Run cron task
-[**admin_delete_hook**](AdminApi.md#admin_delete_hook) | **DELETE** /amdin/hooks/{id} | Delete a hook
+[**admin_delete_hook**](AdminApi.md#admin_delete_hook) | **DELETE** /admin/hooks/{id} | Delete a hook
 [**admin_delete_unadopted_repository**](AdminApi.md#admin_delete_unadopted_repository) | **DELETE** /admin/unadopted/{owner}/{repo} | Delete unadopted files
 [**admin_delete_user**](AdminApi.md#admin_delete_user) | **DELETE** /admin/users/{username} | Delete a user
 [**admin_delete_user_public_key**](AdminApi.md#admin_delete_user_public_key) | **DELETE** /admin/users/{username}/keys/{id} | Delete a user&#39;s public key
 [**admin_edit_hook**](AdminApi.md#admin_edit_hook) | **PATCH** /admin/hooks/{id} | Update a hook
 [**admin_edit_user**](AdminApi.md#admin_edit_user) | **PATCH** /admin/users/{username} | Edit an existing user
+[**admin_get_all_emails**](AdminApi.md#admin_get_all_emails) | **GET** /admin/emails | List all emails
 [**admin_get_all_orgs**](AdminApi.md#admin_get_all_orgs) | **GET** /admin/orgs | List all organizations
-[**admin_get_all_users**](AdminApi.md#admin_get_all_users) | **GET** /admin/users | List all users
 [**admin_get_hook**](AdminApi.md#admin_get_hook) | **GET** /admin/hooks/{id} | Get a hook
 [**admin_list_hooks**](AdminApi.md#admin_list_hooks) | **GET** /admin/hooks | List system&#39;s webhooks
+[**admin_rename_user**](AdminApi.md#admin_rename_user) | **POST** /admin/users/{username}/rename | Rename a user
+[**admin_search_emails**](AdminApi.md#admin_search_emails) | **GET** /admin/emails/search | Search all emails
+[**admin_search_users**](AdminApi.md#admin_search_users) | **GET** /admin/users | Search users according filter conditions
 [**admin_unadopted_list**](AdminApi.md#admin_unadopted_list) | **GET** /admin/unadopted | List unadopted repositories
 
 
@@ -1173,6 +1176,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **admin_get_all_emails**
+> list[Email] admin_get_all_emails(page=page, limit=limit)
+
+List all emails
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # List all emails
+    api_response = api_instance.admin_get_all_emails(page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AdminApi->admin_get_all_emails: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[Email]**](Email.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **admin_get_all_orgs**
 > list[Organization] admin_get_all_orgs(page=page, limit=limit)
 
@@ -1244,89 +1330,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[Organization]**](Organization.md)
-
-### Authorization
-
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **admin_get_all_users**
-> list[User] admin_get_all_users(page=page, limit=limit)
-
-List all users
-
-### Example
-```python
-from __future__ import print_function
-import time
-import giteapy
-from giteapy.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: AccessToken
-configuration = giteapy.Configuration()
-configuration.api_key['access_token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['access_token'] = 'Bearer'
-# Configure API key authorization: AuthorizationHeaderToken
-configuration = giteapy.Configuration()
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-# Configure HTTP basic authorization: BasicAuth
-configuration = giteapy.Configuration()
-configuration.username = 'YOUR_USERNAME'
-configuration.password = 'YOUR_PASSWORD'
-# Configure API key authorization: SudoHeader
-configuration = giteapy.Configuration()
-configuration.api_key['Sudo'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Sudo'] = 'Bearer'
-# Configure API key authorization: SudoParam
-configuration = giteapy.Configuration()
-configuration.api_key['sudo'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['sudo'] = 'Bearer'
-# Configure API key authorization: TOTPHeader
-configuration = giteapy.Configuration()
-configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
-# Configure API key authorization: Token
-configuration = giteapy.Configuration()
-configuration.api_key['token'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['token'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
-page = 56 # int | page number of results to return (1-based) (optional)
-limit = 56 # int | page size of results (optional)
-
-try:
-    # List all users
-    api_response = api_instance.admin_get_all_users(page=page, limit=limit)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AdminApi->admin_get_all_users: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| page number of results to return (1-based) | [optional] 
- **limit** | **int**| page size of results | [optional] 
-
-### Return type
-
-[**list[User]**](User.md)
 
 ### Authorization
 
@@ -1491,6 +1494,260 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[Hook]**](Hook.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **admin_rename_user**
+> admin_rename_user(username, body)
+
+Rename a user
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
+username = 'username_example' # str | existing username of user
+body = giteapy.RenameUserOption() # RenameUserOption | 
+
+try:
+    # Rename a user
+    api_instance.admin_rename_user(username, body)
+except ApiException as e:
+    print("Exception when calling AdminApi->admin_rename_user: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **username** | **str**| existing username of user | 
+ **body** | [**RenameUserOption**](RenameUserOption.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **admin_search_emails**
+> list[Email] admin_search_emails(q=q, page=page, limit=limit)
+
+Search all emails
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
+q = 'q_example' # str | keyword (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # Search all emails
+    api_response = api_instance.admin_search_emails(q=q, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AdminApi->admin_search_emails: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **str**| keyword | [optional] 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[Email]**](Email.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **admin_search_users**
+> list[User] admin_search_users(source_id=source_id, login_name=login_name, page=page, limit=limit)
+
+Search users according filter conditions
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.AdminApi(giteapy.ApiClient(configuration))
+source_id = 789 # int | ID of the user's login source to search for (optional)
+login_name = 'login_name_example' # str | user's login name to search for (optional)
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # Search users according filter conditions
+    api_response = api_instance.admin_search_users(source_id=source_id, login_name=login_name, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AdminApi->admin_search_users: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source_id** | **int**| ID of the user&#39;s login source to search for | [optional] 
+ **login_name** | **str**| user&#39;s login name to search for | [optional] 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[User]**](User.md)
 
 ### Authorization
 

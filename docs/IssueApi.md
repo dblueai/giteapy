@@ -12,7 +12,9 @@ Method | HTTP request | Description
 [**issue_create_comment**](IssueApi.md#issue_create_comment) | **POST** /repos/{owner}/{repo}/issues/{index}/comments | Add a comment to an issue
 [**issue_create_issue**](IssueApi.md#issue_create_issue) | **POST** /repos/{owner}/{repo}/issues | Create an issue. If using deadline only the date will be taken into account, and time of day ignored.
 [**issue_create_issue_attachment**](IssueApi.md#issue_create_issue_attachment) | **POST** /repos/{owner}/{repo}/issues/{index}/assets | Create an issue attachment
+[**issue_create_issue_blocking**](IssueApi.md#issue_create_issue_blocking) | **POST** /repos/{owner}/{repo}/issues/{index}/blocks | Block the issue given in the body by the issue in path
 [**issue_create_issue_comment_attachment**](IssueApi.md#issue_create_issue_comment_attachment) | **POST** /repos/{owner}/{repo}/issues/comments/{id}/assets | Create a comment attachment
+[**issue_create_issue_dependencies**](IssueApi.md#issue_create_issue_dependencies) | **POST** /repos/{owner}/{repo}/issues/{index}/dependencies | Make the issue in the url depend on the issue in the form.
 [**issue_create_label**](IssueApi.md#issue_create_label) | **POST** /repos/{owner}/{repo}/labels | Create a label
 [**issue_create_milestone**](IssueApi.md#issue_create_milestone) | **POST** /repos/{owner}/{repo}/milestones | Create a milestone
 [**issue_delete**](IssueApi.md#issue_delete) | **DELETE** /repos/{owner}/{repo}/issues/{index} | Delete an issue
@@ -48,12 +50,16 @@ Method | HTTP request | Description
 [**issue_get_milestone**](IssueApi.md#issue_get_milestone) | **GET** /repos/{owner}/{repo}/milestones/{id} | Get a milestone
 [**issue_get_milestones_list**](IssueApi.md#issue_get_milestones_list) | **GET** /repos/{owner}/{repo}/milestones | Get all of a repository&#39;s opened milestones
 [**issue_get_repo_comments**](IssueApi.md#issue_get_repo_comments) | **GET** /repos/{owner}/{repo}/issues/comments | List all comments in a repository
+[**issue_list_blocks**](IssueApi.md#issue_list_blocks) | **GET** /repos/{owner}/{repo}/issues/{index}/blocks | List issues that are blocked by this issue
 [**issue_list_issue_attachments**](IssueApi.md#issue_list_issue_attachments) | **GET** /repos/{owner}/{repo}/issues/{index}/assets | List issue&#39;s attachments
 [**issue_list_issue_comment_attachments**](IssueApi.md#issue_list_issue_comment_attachments) | **GET** /repos/{owner}/{repo}/issues/comments/{id}/assets | List comment&#39;s attachments
+[**issue_list_issue_dependencies**](IssueApi.md#issue_list_issue_dependencies) | **GET** /repos/{owner}/{repo}/issues/{index}/dependencies | List an issue&#39;s dependencies, i.e all issues that block this issue.
 [**issue_list_issues**](IssueApi.md#issue_list_issues) | **GET** /repos/{owner}/{repo}/issues | List a repository&#39;s issues
 [**issue_list_labels**](IssueApi.md#issue_list_labels) | **GET** /repos/{owner}/{repo}/labels | Get all of a repository&#39;s labels
 [**issue_post_comment_reaction**](IssueApi.md#issue_post_comment_reaction) | **POST** /repos/{owner}/{repo}/issues/comments/{id}/reactions | Add a reaction to a comment of an issue
 [**issue_post_issue_reaction**](IssueApi.md#issue_post_issue_reaction) | **POST** /repos/{owner}/{repo}/issues/{index}/reactions | Add a reaction to an issue
+[**issue_remove_issue_blocking**](IssueApi.md#issue_remove_issue_blocking) | **DELETE** /repos/{owner}/{repo}/issues/{index}/blocks | Unblock the issue given in the body by the issue in path
+[**issue_remove_issue_dependencies**](IssueApi.md#issue_remove_issue_dependencies) | **DELETE** /repos/{owner}/{repo}/issues/{index}/dependencies | Remove an issue dependency
 [**issue_remove_label**](IssueApi.md#issue_remove_label) | **DELETE** /repos/{owner}/{repo}/issues/{index}/labels/{id} | Remove a label from an issue
 [**issue_replace_labels**](IssueApi.md#issue_replace_labels) | **PUT** /repos/{owner}/{repo}/issues/{index}/labels | Replace an issue&#39;s labels
 [**issue_reset_time**](IssueApi.md#issue_reset_time) | **DELETE** /repos/{owner}/{repo}/issues/{index}/times | Reset a tracked time of an issue
@@ -62,6 +68,9 @@ Method | HTTP request | Description
 [**issue_stop_stop_watch**](IssueApi.md#issue_stop_stop_watch) | **POST** /repos/{owner}/{repo}/issues/{index}/stopwatch/stop | Stop an issue&#39;s existing stopwatch.
 [**issue_subscriptions**](IssueApi.md#issue_subscriptions) | **GET** /repos/{owner}/{repo}/issues/{index}/subscriptions | Get users who subscribed on an issue.
 [**issue_tracked_times**](IssueApi.md#issue_tracked_times) | **GET** /repos/{owner}/{repo}/issues/{index}/times | List an issue&#39;s tracked times
+[**move_issue_pin**](IssueApi.md#move_issue_pin) | **PATCH** /repos/{owner}/{repo}/issues/{index}/pin/{position} | Moves the Pin to the given Position
+[**pin_issue**](IssueApi.md#pin_issue) | **POST** /repos/{owner}/{repo}/issues/{index}/pin | Pin an Issue
+[**unpin_issue**](IssueApi.md#unpin_issue) | **DELETE** /repos/{owner}/{repo}/issues/{index}/pin | Unpin an Issue
 
 
 # **issue_add_label**
@@ -754,6 +763,93 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **issue_create_issue_blocking**
+> Issue issue_create_issue_blocking(owner, repo, index, body=body)
+
+Block the issue given in the body by the issue in path
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 'index_example' # str | index of the issue
+body = giteapy.IssueMeta() # IssueMeta |  (optional)
+
+try:
+    # Block the issue given in the body by the issue in path
+    api_response = api_instance.issue_create_issue_blocking(owner, repo, index, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling IssueApi->issue_create_issue_blocking: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **str**| index of the issue | 
+ **body** | [**IssueMeta**](IssueMeta.md)|  | [optional] 
+
+### Return type
+
+[**Issue**](Issue.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **issue_create_issue_comment_attachment**
 > Attachment issue_create_issue_comment_attachment(owner, repo, id, attachment, name=name)
 
@@ -839,6 +935,93 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **issue_create_issue_dependencies**
+> Issue issue_create_issue_dependencies(owner, repo, index, body=body)
+
+Make the issue in the url depend on the issue in the form.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 'index_example' # str | index of the issue
+body = giteapy.IssueMeta() # IssueMeta |  (optional)
+
+try:
+    # Make the issue in the url depend on the issue in the form.
+    api_response = api_instance.issue_create_issue_dependencies(owner, repo, index, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling IssueApi->issue_create_issue_dependencies: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **str**| index of the issue | 
+ **body** | [**IssueMeta**](IssueMeta.md)|  | [optional] 
+
+### Return type
+
+[**Issue**](Issue.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -3874,6 +4057,95 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **issue_list_blocks**
+> list[Issue] issue_list_blocks(owner, repo, index, page=page, limit=limit)
+
+List issues that are blocked by this issue
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 'index_example' # str | index of the issue
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # List issues that are blocked by this issue
+    api_response = api_instance.issue_list_blocks(owner, repo, index, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling IssueApi->issue_list_blocks: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **str**| index of the issue | 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[Issue]**](Issue.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **issue_list_issue_attachments**
 > list[Attachment] issue_list_issue_attachments(owner, repo, index)
 
@@ -4032,6 +4304,95 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[Attachment]**](Attachment.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **issue_list_issue_dependencies**
+> list[Issue] issue_list_issue_dependencies(owner, repo, index, page=page, limit=limit)
+
+List an issue's dependencies, i.e all issues that block this issue.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 'index_example' # str | index of the issue
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # List an issue's dependencies, i.e all issues that block this issue.
+    api_response = api_instance.issue_list_issue_dependencies(owner, repo, index, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling IssueApi->issue_list_issue_dependencies: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **str**| index of the issue | 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[Issue]**](Issue.md)
 
 ### Authorization
 
@@ -4412,6 +4773,180 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **issue_remove_issue_blocking**
+> Issue issue_remove_issue_blocking(owner, repo, index, body=body)
+
+Unblock the issue given in the body by the issue in path
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 'index_example' # str | index of the issue
+body = giteapy.IssueMeta() # IssueMeta |  (optional)
+
+try:
+    # Unblock the issue given in the body by the issue in path
+    api_response = api_instance.issue_remove_issue_blocking(owner, repo, index, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling IssueApi->issue_remove_issue_blocking: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **str**| index of the issue | 
+ **body** | [**IssueMeta**](IssueMeta.md)|  | [optional] 
+
+### Return type
+
+[**Issue**](Issue.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **issue_remove_issue_dependencies**
+> Issue issue_remove_issue_dependencies(owner, repo, index, body=body)
+
+Remove an issue dependency
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 'index_example' # str | index of the issue
+body = giteapy.IssueMeta() # IssueMeta |  (optional)
+
+try:
+    # Remove an issue dependency
+    api_response = api_instance.issue_remove_issue_dependencies(owner, repo, index, body=body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling IssueApi->issue_remove_issue_dependencies: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **str**| index of the issue | 
+ **body** | [**IssueMeta**](IssueMeta.md)|  | [optional] 
+
+### Return type
+
+[**Issue**](Issue.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **issue_remove_label**
 > issue_remove_label(owner, repo, index, id)
 
@@ -4670,7 +5205,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **issue_search_issues**
-> list[Issue] issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, owner=owner, team=team, page=page, limit=limit)
+> list[Issue] issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, reviewed=reviewed, owner=owner, team=team, page=page, limit=limit)
 
 Search for issues across the repositories that the user has access to
 
@@ -4731,6 +5266,7 @@ assigned = true # bool | filter (issues / pulls) assigned to you, default is fal
 created = true # bool | filter (issues / pulls) created by you, default is false (optional)
 mentioned = true # bool | filter (issues / pulls) mentioning you, default is false (optional)
 review_requested = true # bool | filter pulls requesting your review, default is false (optional)
+reviewed = true # bool | filter pulls reviewed by you, default is false (optional)
 owner = 'owner_example' # str | filter by owner (optional)
 team = 'team_example' # str | filter by team (requires organization owner parameter to be provided) (optional)
 page = 56 # int | page number of results to return (1-based) (optional)
@@ -4738,7 +5274,7 @@ limit = 56 # int | page size of results (optional)
 
 try:
     # Search for issues across the repositories that the user has access to
-    api_response = api_instance.issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, owner=owner, team=team, page=page, limit=limit)
+    api_response = api_instance.issue_search_issues(state=state, labels=labels, milestones=milestones, q=q, priority_repo_id=priority_repo_id, type=type, since=since, before=before, assigned=assigned, created=created, mentioned=mentioned, review_requested=review_requested, reviewed=reviewed, owner=owner, team=team, page=page, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling IssueApi->issue_search_issues: %s\n" % e)
@@ -4760,6 +5296,7 @@ Name | Type | Description  | Notes
  **created** | **bool**| filter (issues / pulls) created by you, default is false | [optional] 
  **mentioned** | **bool**| filter (issues / pulls) mentioning you, default is false | [optional] 
  **review_requested** | **bool**| filter pulls requesting your review, default is false | [optional] 
+ **reviewed** | **bool**| filter pulls reviewed by you, default is false | [optional] 
  **owner** | **str**| filter by owner | [optional] 
  **team** | **str**| filter by team (requires organization owner parameter to be provided) | [optional] 
  **page** | **int**| page number of results to return (1-based) | [optional] 
@@ -5129,6 +5666,260 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, text/plain
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **move_issue_pin**
+> move_issue_pin(owner, repo, index, position)
+
+Moves the Pin to the given Position
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of issue
+position = 789 # int | the new position
+
+try:
+    # Moves the Pin to the given Position
+    api_instance.move_issue_pin(owner, repo, index, position)
+except ApiException as e:
+    print("Exception when calling IssueApi->move_issue_pin: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **int**| index of issue | 
+ **position** | **int**| the new position | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **pin_issue**
+> pin_issue(owner, repo, index)
+
+Pin an Issue
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of issue to pin
+
+try:
+    # Pin an Issue
+    api_instance.pin_issue(owner, repo, index)
+except ApiException as e:
+    print("Exception when calling IssueApi->pin_issue: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **int**| index of issue to pin | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **unpin_issue**
+> unpin_issue(owner, repo, index)
+
+Unpin an Issue
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.IssueApi(giteapy.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the repo
+repo = 'repo_example' # str | name of the repo
+index = 789 # int | index of issue to unpin
+
+try:
+    # Unpin an Issue
+    api_instance.unpin_issue(owner, repo, index)
+except ApiException as e:
+    print("Exception when calling IssueApi->unpin_issue: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the repo | 
+ **repo** | **str**| name of the repo | 
+ **index** | **int**| index of issue to unpin | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json, text/html
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

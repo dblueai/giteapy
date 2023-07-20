@@ -4,12 +4,12 @@ All URIs are relative to *http://localhost/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**activitypub_person**](ActivitypubApi.md#activitypub_person) | **GET** /activitypub/user/{username} | Returns the Person actor for a user
-[**activitypub_person_inbox**](ActivitypubApi.md#activitypub_person_inbox) | **POST** /activitypub/user/{username}/inbox | Send to the inbox
+[**activitypub_person**](ActivitypubApi.md#activitypub_person) | **GET** /activitypub/user-id/{user-id} | Returns the Person actor for a user
+[**activitypub_person_inbox**](ActivitypubApi.md#activitypub_person_inbox) | **POST** /activitypub/user-id/{user-id}/inbox | Send to the inbox
 
 
 # **activitypub_person**
-> ActivityPub activitypub_person(username)
+> ActivityPub activitypub_person(user_id)
 
 Returns the Person actor for a user
 
@@ -58,11 +58,11 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = giteapy.ActivitypubApi(giteapy.ApiClient(configuration))
-username = 'username_example' # str | username of the user
+user_id = 56 # int | user ID of the user
 
 try:
     # Returns the Person actor for a user
-    api_response = api_instance.activitypub_person(username)
+    api_response = api_instance.activitypub_person(user_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ActivitypubApi->activitypub_person: %s\n" % e)
@@ -72,7 +72,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of the user | 
+ **user_id** | **int**| user ID of the user | 
 
 ### Return type
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **activitypub_person_inbox**
-> activitypub_person_inbox(username)
+> activitypub_person_inbox(user_id)
 
 Send to the inbox
 
@@ -139,11 +139,11 @@ configuration.api_key['token'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = giteapy.ActivitypubApi(giteapy.ApiClient(configuration))
-username = 'username_example' # str | username of the user
+user_id = 56 # int | user ID of the user
 
 try:
     # Send to the inbox
-    api_instance.activitypub_person_inbox(username)
+    api_instance.activitypub_person_inbox(user_id)
 except ApiException as e:
     print("Exception when calling ActivitypubApi->activitypub_person_inbox: %s\n" % e)
 ```
@@ -152,7 +152,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **username** | **str**| username of the user | 
+ **user_id** | **int**| user ID of the user | 
 
 ### Return type
 
