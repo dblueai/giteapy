@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **tag_name** | **str** |  | [optional] 
 **tarball_url** | **str** |  | [optional] 
 **target_commitish** | **str** |  | [optional] 
+**upload_url** | **str** |  | [optional] 
 **url** | **str** |  | [optional] 
 **zipball_url** | **str** |  | [optional] 
 

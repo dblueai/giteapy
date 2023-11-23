@@ -57,6 +57,7 @@ Name | Type | Description | Notes
 **stars_count** | **int** |  | [optional] 
 **template** | **bool** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
+**url** | **str** |  | [optional] 
 **watchers_count** | **int** |  | [optional] 
 **website** | **str** |  | [optional] 
 

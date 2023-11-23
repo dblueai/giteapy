@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_at** | **datetime** |  | [optional] 
 **creator** | [**User**](User.md) |  | [optional] 
+**html_url** | **str** |  | [optional] 
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **owner** | [**User**](User.md) |  | [optional] 

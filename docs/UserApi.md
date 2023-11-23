@@ -5,8 +5,10 @@ All URIs are relative to *http://localhost/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_current_user_repo**](UserApi.md#create_current_user_repo) | **POST** /user/repos | Create a repository
+[**delete_user_secret**](UserApi.md#delete_user_secret) | **DELETE** /user/actions/secrets/{secretname} | Delete a secret in a user scope
 [**get_user_settings**](UserApi.md#get_user_settings) | **GET** /user/settings | Get user settings
 [**get_verification_token**](UserApi.md#get_verification_token) | **GET** /user/gpg_key_token | Get a Token to verify
+[**update_user_secret**](UserApi.md#update_user_secret) | **PUT** /user/actions/secrets/{secretname} | Create or Update a secret value in a user scope
 [**update_user_settings**](UserApi.md#update_user_settings) | **PATCH** /user/settings | Update user settings
 [**user_add_email**](UserApi.md#user_add_email) | **POST** /user/emails | Add email addresses
 [**user_check_following**](UserApi.md#user_check_following) | **GET** /users/{username}/following/{target} | Check if one user is following another user
@@ -34,6 +36,7 @@ Method | HTTP request | Description
 [**user_current_put_star**](UserApi.md#user_current_put_star) | **PUT** /user/starred/{owner}/{repo} | Star the given repo
 [**user_current_tracked_times**](UserApi.md#user_current_tracked_times) | **GET** /user/times | List the current user&#39;s tracked times
 [**user_delete_access_token**](UserApi.md#user_delete_access_token) | **DELETE** /users/{username}/tokens/{token} | delete an access token
+[**user_delete_avatar**](UserApi.md#user_delete_avatar) | **DELETE** /user/avatar | Delete Avatar
 [**user_delete_email**](UserApi.md#user_delete_email) | **DELETE** /user/emails | Delete email addresses
 [**user_delete_hook**](UserApi.md#user_delete_hook) | **DELETE** /user/hooks/{id} | Delete a hook
 [**user_delete_o_auth2_application**](UserApi.md#user_delete_o_auth2_application) | **DELETE** /user/applications/oauth2/{id} | delete an OAuth2 Application
@@ -58,6 +61,7 @@ Method | HTTP request | Description
 [**user_list_subscriptions**](UserApi.md#user_list_subscriptions) | **GET** /users/{username}/subscriptions | List the repositories watched by a user
 [**user_list_teams**](UserApi.md#user_list_teams) | **GET** /user/teams | List all the teams a user belongs to
 [**user_search**](UserApi.md#user_search) | **GET** /users/search | Search for users
+[**user_update_avatar**](UserApi.md#user_update_avatar) | **POST** /user/avatar | Update Avatar
 [**user_update_o_auth2_application**](UserApi.md#user_update_o_auth2_application) | **PATCH** /user/applications/oauth2/{id} | update an OAuth2 Application, this includes regenerating the client secret
 [**user_verify_gpg_key**](UserApi.md#user_verify_gpg_key) | **POST** /user/gpg_key_verify | Verify a GPG key
 
@@ -131,6 +135,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Repository**](Repository.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_user_secret**
+> delete_user_secret(secretname)
+
+Delete a secret in a user scope
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.UserApi(giteapy.ApiClient(configuration))
+secretname = 'secretname_example' # str | name of the secret
+
+try:
+    # Delete a secret in a user scope
+    api_instance.delete_user_secret(secretname)
+except ApiException as e:
+    print("Exception when calling UserApi->delete_user_secret: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **secretname** | **str**| name of the secret | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -294,6 +378,88 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: application/json, text/plain
  - **Accept**: text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_user_secret**
+> update_user_secret(secretname, body=body)
+
+Create or Update a secret value in a user scope
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.UserApi(giteapy.ApiClient(configuration))
+secretname = 'secretname_example' # str | name of the secret
+body = giteapy.CreateOrUpdateSecretOption() # CreateOrUpdateSecretOption |  (optional)
+
+try:
+    # Create or Update a secret value in a user scope
+    api_instance.update_user_secret(secretname, body=body)
+except ApiException as e:
+    print("Exception when calling UserApi->update_user_secret: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **secretname** | **str**| name of the secret | 
+ **body** | [**CreateOrUpdateSecretOption**](CreateOrUpdateSecretOption.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2508,6 +2674,82 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **user_delete_avatar**
+> user_delete_avatar()
+
+Delete Avatar
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.UserApi(giteapy.ApiClient(configuration))
+
+try:
+    # Delete Avatar
+    api_instance.user_delete_avatar()
+except ApiException as e:
+    print("Exception when calling UserApi->user_delete_avatar: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **user_delete_email**
 > user_delete_email(body=body)
 
@@ -4487,6 +4729,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse2001**](InlineResponse2001.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_update_avatar**
+> user_update_avatar(body=body)
+
+Update Avatar
+
+### Example
+```python
+from __future__ import print_function
+import time
+import giteapy
+from giteapy.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = giteapy.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = giteapy.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = giteapy.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = giteapy.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = giteapy.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = giteapy.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = giteapy.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = giteapy.UserApi(giteapy.ApiClient(configuration))
+body = giteapy.UpdateUserAvatarOption() # UpdateUserAvatarOption |  (optional)
+
+try:
+    # Update Avatar
+    api_instance.user_update_avatar(body=body)
+except ApiException as e:
+    print("Exception when calling UserApi->user_update_avatar: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**UpdateUserAvatarOption**](UpdateUserAvatarOption.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
